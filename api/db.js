@@ -1,0 +1,47 @@
+// db.js - MySQL Database Connection Pool
+const mysql = require("mysql2");
+
+// Use a pool instead of single connection (more reliable)
+const db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "bread",
+    port: 8889,
+    waitForConnections: true,
+    connectionLimit: 10
+});
+
+// Test the connection on startup
+db.query("SELECT 1", (err) => {
+    if (err) {
+        console.log("❌ DATABASE CONNECTION ERROR:", err.code, err.message);
+        console.log("   Check that MAMP is running and MySQL is on port 8889");
+        return;
+    }
+
+    console.log("✅ Database connected successfully");
+
+    // Verify tables exist
+    db.query("SHOW TABLES", (err, results) => {
+        if (err) {
+            console.log("❌ Error checking tables:", err.message);
+            return;
+        }
+
+        const tables = results.map(row => Object.values(row)[0]);
+        console.log("📋 Tables found:", tables.join(", ") || "(none)");
+
+        const required = ['categories', 'products'];
+        const missing = required.filter(t => !tables.includes(t));
+
+        if (missing.length > 0) {
+            console.log("⚠️  Missing tables:", missing.join(", "));
+            console.log("   Import bread.sql into phpMyAdmin to create them");
+        } else {
+            console.log("✅ All required tables found");
+        }
+    });
+});
+
+module.exports = db;

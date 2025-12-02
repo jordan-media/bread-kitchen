@@ -1,0 +1,8 @@
+/* Global styles - prevents horizontal scroll while preserving sticky */
+html {
+    overflow-x: clip;
+}
+
+body {
+    max-width: 100vw;
+}

@@ -1,0 +1,140 @@
+/* Product.module.css */
+
+.japanese-name {
+    color: #8B5A2B;
+    font-size: 1.2em;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.size-selector {
+    margin: 20px 0;
+    padding: 16px;
+    background: #EFE3C3;
+    border-radius: 8px;
+}
+
+.size-selector label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #5a4a32;
+}
+
+.size-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #CFD8B3;
+    border-radius: 4px;
+    background: #FEFBE3;
+    color: #5a4a32;
+    cursor: pointer;
+}
+
+.size-dropdown:focus {
+    outline: none;
+    border-color: #C58E56;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #C58E56;
+    margin: 16px 0;
+}
+
+.stock-info {
+    color: #8B5A2B;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.description {
+    margin: 24px 0;
+}
+
+.description h3 {
+    margin-bottom: 12px;
+}
+
+.description-ja {
+    color: #8B5A2B;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #CFD8B3;
+}
+
+.variant-details {
+    margin: 24px 0;
+    padding: 16px;
+    background: #EFE3C3;
+    border-radius: 8px;
+}
+
+.variant-details h3 {
+    margin-bottom: 12px;
+}
+
+.variant-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.variant-details li {
+    padding: 6px 0;
+}
+
+.product-meta {
+    margin-top: 20px;
+    padding: 16px;
+    background: #EFE3C3;
+    border-radius: 8px;
+}
+
+.product-meta p {
+    margin: 8px 0;
+    color: #6b5a47;
+}
+
+.allergens {
+    margin-top: 16px;
+}
+
+.allergens ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+}
+
+.allergens li {
+    display: inline-block;
+    background: #EAEECD;
+    color: #6b5a47;
+    padding: 4px 12px;
+    margin: 4px 4px 4px 0;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.image-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.image-nav span {
+    font-size: 0.9em;
+    color: #8B5A2B;
+}

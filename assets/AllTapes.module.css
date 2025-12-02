@@ -1,0 +1,8 @@
+.tape-title {
+    margin-bottom: 8px;
+}
+
+.tape-actions {
+    display: flex;
+    gap: 8px;
+}

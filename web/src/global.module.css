@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #333;
+    background-color: #FEFBE3;
+    /* Modern orb gradient background - intensified */
+    background-image:
+        /* Warm peach/apricot orb - center top */
+        radial-gradient(ellipse 70% 50% at 50% 15%, rgba(245, 200, 160, 0.7) 0%, transparent 50%),
+        /* Sage green orb - left */
+        radial-gradient(ellipse 55% 55% at 15% 45%, rgba(180, 200, 150, 0.65) 0%, transparent 45%),
+        /* Warm terracotta/coral orb - right */
+        radial-gradient(ellipse 50% 50% at 85% 55%, rgba(210, 140, 100, 0.45) 0%, transparent 42%),
+        /* Soft lavender/mauve orb - bottom center */
+        radial-gradient(ellipse 65% 45% at 50% 85%, rgba(190, 170, 200, 0.5) 0%, transparent 45%),
+        /* Golden honey orb - top right */
+        radial-gradient(ellipse 45% 45% at 80% 20%, rgba(240, 210, 140, 0.55) 0%, transparent 42%),
+        /* Soft mint orb - bottom left */
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(170, 210, 190, 0.4) 0%, transparent 40%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+h1, .h1 { font-size: 3.05em; }
+h2, .h2 { font-size: 2.44em; }
+h3, .h3 { font-size: 1.95em; }
+h4, .h4 { font-size: 1.56em; }
+h5, .h5 { font-size: 1.25em; }
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Flex */
+.flex {
+    display: flex;
+}
+
+.flex-inline {
+    display: inline-flex;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+
+/* Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+}
+
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-9 { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* Inline Menu */   
+.inline-menu {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    list-style-type: none;
+}
+
+.active-menu-item {
+    color: #f00;
+}
+
+.button {
+    all: unset;
+    font-family: 'Nunito', sans-serif;
+    display: inline-block;
+    padding: 0.25rem .5rem;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000;
+    box-shadow: 3px 3px 0px 0px black;
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button.small { font-size: 10px; }
+.button.delete { background-color: #f00; color: #fff; }
+.button.warning { background-color: #ff0; color: #000; }
+.button.success { background-color: #0f0; color: #000; }
+/* Card */
+
+.card {
+    border: 1px solid #000;
+    box-shadow: 3px 3px 0px 0px black;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+.card-content > *:first-child {
+    margin-top: 0;
+}
+
+.card-content > *:last-child {
+    margin-bottom: 0;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+/* Forms */
+
+.form-group label {
+    display: block;
+    margin: 1rem 0 0.5rem 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-group input {
+    margin-right: 0.5rem;
+}
+
+.form-group input, .form-group select, .form-group textarea{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-family: 'Nunito', sans-serif;
+    max-width: 100%;
+}
+
+.form-group textarea {
+    min-height: 200px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+}
+
+.form-group input[type="file"] {
+    font-family:unset;
+}
+.form-group input[type="submit"] {
+    margin-top: 1rem;
+}

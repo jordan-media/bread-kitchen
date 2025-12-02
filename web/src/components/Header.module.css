@@ -1,0 +1,387 @@
+/* Header.module.css */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(254, 251, 227, 0.92) 0%, rgba(254, 251, 227, 0.85) 70%, rgba(254, 251, 227, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Navigation Bar */
+.nav-bar {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 32px;
+}
+
+/* Logo - Left */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+/* Nav Links - Center */
+.nav-links {
+    display: flex;
+    gap: 32px;
+    padding: 10px 32px;
+    position: relative;
+}
+
+.nav-links::before {
+    content: '';
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350%;
+    height: 400%;
+    pointer-events: none;
+    /* Soft sage green wispy orb - matches course button color */
+    background: radial-gradient(
+        ellipse 70% 40% at 50% 45%,
+        rgba(207, 216, 179, 0.75) 0%,
+        rgba(207, 216, 179, 0.45) 25%,
+        rgba(207, 216, 179, 0.2) 45%,
+        rgba(207, 216, 179, 0.08) 60%,
+        transparent 75%
+    );
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #3d3529;
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #3d3529;
+    transition: width 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #5a4a32;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* CTA Group - Right */
+.cta-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Solid CTA - Courses */
+.cta-solid {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #CFD8B3;
+    color: #3d3529;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+}
+
+.cta-solid:hover {
+    background-color: #bcc9a0;
+}
+
+/* Outline CTA - Sign Up */
+.cta-outline {
+    display: inline-block;
+    padding: 9px 23px;
+    background-color: transparent;
+    color: #3d3529;
+    text-decoration: none;
+    border: 1px solid #3d3529;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.85em;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.cta-outline:hover {
+    background-color: #3d3529;
+    color: #FEFBE3;
+}
+
+/* Signup Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(90, 74, 50, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal {
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    /* Layered shadows for depth */
+    box-shadow:
+        /* Outer drop shadow - bottom right, warm and soft */
+        8px 12px 32px rgba(90, 74, 50, 0.2),
+        16px 20px 48px rgba(139, 90, 43, 0.12),
+        /* Outer subtle lift shadow - top left, light */
+        -4px -4px 24px rgba(255, 255, 255, 0.6),
+        /* Inset shadow - top left, soft light for inner glow */
+        inset 3px 3px 12px rgba(255, 255, 255, 0.7),
+        /* Inset shadow - bottom right, subtle depth */
+        inset -2px -2px 10px rgba(90, 74, 50, 0.08);
+    /* Orb gradient background */
+    background-color: #FEFBE3;
+    background-image:
+        /* Warm peach orb - top */
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245, 200, 160, 0.6) 0%, transparent 50%),
+        /* Sage green orb - bottom left */
+        radial-gradient(ellipse 70% 70% at 10% 90%, rgba(180, 200, 150, 0.5) 0%, transparent 45%),
+        /* Terracotta orb - right */
+        radial-gradient(ellipse 60% 60% at 100% 50%, rgba(210, 140, 100, 0.35) 0%, transparent 45%),
+        /* Lavender orb - bottom */
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(190, 170, 200, 0.4) 0%, transparent 45%);
+    overflow: hidden;
+}
+
+.modal h2 {
+    color: #5a4a32;
+    font-size: 1.5em;
+    margin: 0 0 8px 0;
+}
+
+.modal > p {
+    color: #8B5A2B;
+    margin: 0 0 24px 0;
+    font-size: 0.95em;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #8B5A2B;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.modal-close:hover {
+    color: #5a4a32;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-form input {
+    padding: 14px 16px;
+    border: 1px solid #CFD8B3;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #FEFBE3;
+    color: #5a4a32;
+}
+
+.modal-form input:focus {
+    outline: none;
+    border-color: #C58E56;
+}
+
+.modal-form button {
+    padding: 14px 20px;
+    background-color: #CFD8B3;
+    color: #5a4a32;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
+}
+
+.modal-form button:hover {
+    background-color: #bcc9a0;
+}
+
+.modal-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.modal-success {
+    text-align: center;
+}
+
+.modal-success p {
+    color: #5a4a32;
+    margin: 0 0 20px 0;
+}
+
+.modal-button {
+    padding: 12px 24px;
+    background-color: #CFD8B3;
+    color: #5a4a32;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
+}
+
+.modal-button:hover {
+    background-color: #bcc9a0;
+}
+
+.modal-info {
+    margin: 0;
+    padding: 12px;
+    background-color: #FEFBE3;
+    color: #5a4a32;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.modal-error {
+    margin: 0;
+    padding: 12px;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nav-bar {
+        padding: 12px 16px;
+        gap: 24px;
+    }
+
+    .nav-links {
+        gap: 24px;
+    }
+
+    .nav-link {
+        font-size: 0.8em;
+    }
+
+    .cta-solid,
+    .cta-outline {
+        padding: 8px 16px;
+        font-size: 0.8em;
+    }
+
+    .cta-outline {
+        padding: 7px 15px;
+    }
+
+    .logo img {
+        height: 38px;
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-links {
+        order: 1;
+    }
+
+    .cta-group {
+        order: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav-bar {
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .nav-link {
+        font-size: 0.75em;
+    }
+
+    .cta-group {
+        gap: 8px;
+    }
+
+    .cta-solid,
+    .cta-outline {
+        padding: 8px 12px;
+        font-size: 0.75em;
+    }
+
+    .cta-outline {
+        padding: 7px 11px;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+}

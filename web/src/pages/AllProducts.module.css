@@ -1,0 +1,258 @@
+/* AllProducts.module.css */
+
+/* Page Header - CRITICAL INFO - distinctive sage/teal palette */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding: 40px;
+    border-radius: 16px;
+    position: relative;
+    /* Cool-toned border to stand out */
+    border: 1px solid rgba(240, 250, 248, 0.7);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-left-color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: rgba(140, 180, 170, 0.15);
+    border-right-color: rgba(140, 180, 170, 0.15);
+    /* Enhanced shadows with cool undertone */
+    box-shadow:
+        /* Soft cool glow around edges */
+        0 0 0 1px rgba(245, 255, 252, 0.4),
+        0 0 30px rgba(140, 190, 180, 0.1),
+        /* Outer drop shadow */
+        6px 8px 24px rgba(90, 74, 50, 0.1),
+        12px 16px 40px rgba(100, 90, 80, 0.06),
+        /* Outer highlight - top left */
+        -2px -2px 16px rgba(255, 255, 255, 0.7),
+        /* Inset highlights */
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 1px 0 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(90, 74, 50, 0.04),
+        inset -1px 0 0 rgba(90, 74, 50, 0.02);
+    /* Distinctive sage/teal orb palette - fresh and inviting */
+    background-color: #FEFBE3;
+    background-image:
+        /* Soft sage orb - behind header text */
+        radial-gradient(ellipse 50% 55% at 25% 25%, rgba(160, 195, 165, 0.4) 0%, transparent 50%),
+        /* Teal accent orb - draws eye to title */
+        radial-gradient(ellipse 40% 45% at 20% 35%, rgba(140, 190, 185, 0.35) 0%, transparent 45%),
+        /* Soft mint orb - right side balance */
+        radial-gradient(ellipse 45% 50% at 85% 60%, rgba(175, 210, 195, 0.3) 0%, transparent 45%),
+        /* Warm accent orb - bottom left for warmth */
+        radial-gradient(ellipse 35% 40% at 10% 85%, rgba(230, 190, 160, 0.25) 0%, transparent 45%);
+}
+
+.page-header h2 {
+    margin: 0 0 4px 0;
+    color: #5a4a32;
+}
+
+.page-subtitle {
+    margin: 0 0 16px 0;
+    color: #C58E56;
+    font-weight: 500;
+}
+
+.page-blurb {
+    margin: 0;
+    color: #6b5a47;
+    font-size: 0.95em;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.language-toggle {
+    padding: 8px 16px;
+    background-color: #CFD8B3;
+    color: #5a4a32;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.language-toggle:hover {
+    background-color: #bcc9a0;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #5a4a32;
+    border: 1px solid #CFD8B3;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background-color: #CFD8B3;
+}
+
+.filter-active {
+    background-color: #CFD8B3;
+    border-color: #CFD8B3;
+}
+
+.filter-select {
+    padding: 8px 16px;
+    background-color: #FEFBE3;
+    color: #5a4a32;
+    border: 1px solid #CFD8B3;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #C58E56;
+}
+
+.filter-clear {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #8B5A2B;
+    border: none;
+    font-size: 0.85em;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.filter-clear:hover {
+    color: #5a4a32;
+}
+
+.product-card {
+    background: #EFE3C3;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(90, 74, 50, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(90, 74, 50, 0.15);
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background-color: #CFD8B3;
+}
+
+/* Placeholder for missing images */
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #EFE3C3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image-placeholder img {
+    width: 60%;
+    max-width: 120px;
+    opacity: 0.7;
+}
+
+.image-placeholder span {
+    margin-top: 8px;
+    font-size: 0.8em;
+    color: #8B5A2B;
+    font-weight: 500;
+}
+
+.product-content {
+    padding: 1rem;
+}
+
+.product-name-primary {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #5a4a32;
+}
+
+.product-name-secondary {
+    color: #8B5A2B;
+    font-size: 0.9em;
+    margin: 0 0 8px 0;
+}
+
+.product-category {
+    font-size: 0.75em;
+    color: #5a4a32;
+    background-color: #CFD8B3;
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #C58E56;
+    margin: 8px 0;
+}
+
+.product-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.view-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #CFD8B3;
+    color: #5a4a32;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+.view-button:hover {
+    background-color: #bcc9a0;
+}
+
+/* Allergen indicators */
+.allergens {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.allergen-tag {
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: #fee;
+    color: #c00;
+}
+
+.allergen-free {
+    background-color: #efe;
+    color: #060;
+}

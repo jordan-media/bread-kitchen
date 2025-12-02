@@ -1,0 +1,393 @@
+/* Home.module.css - Masonry Layout */
+
+.home {
+    background-color: transparent;
+    min-height: 100vh;
+}
+
+/* Masonry Section */
+.masonry-section {
+    max-width: 1624px; /* 4 x 400px + 3 x 6px gaps + 16px padding */
+    margin: 0 auto;
+    padding: 8px;
+}
+
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 400px);
+    grid-auto-rows: 400px;
+    gap: 16px;
+    justify-content: center;
+    grid-auto-flow: dense; /* Backfill gaps with smaller items */
+}
+
+/* Tile Base */
+.tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.tile:hover .tile-image {
+    transform: scale(1.05);
+}
+
+.tile-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-color: #EFE3C3;
+    transition: transform 0.5s ease;
+}
+
+.tile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(90, 74, 50, 0.85), transparent);
+    color: #FEFBE3;
+}
+
+.tile-label {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.tile-overlay h2 {
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: 600;
+}
+
+.tile-overlay h3 {
+    font-size: 1.1em;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Tile Sizes - Fixed aspect ratios */
+/* 1fr x 1fr = 400 x 400 (square) */
+.tile-small {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* 2fr x 2fr = 800 x 800 (large square) */
+.tile-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* 2fr x 1fr = 800 x 400 (wide) */
+.tile-medium {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+/* 1fr x 2fr = 400 x 800 (portrait) */
+.tile-portrait {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* 3fr x 1fr = 1200 x 400 (banner) */
+.tile-wide {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+/* 1fr x 3fr = 400 x 1200 (extra tall) */
+.tile-tall {
+    grid-column: span 1;
+    grid-row: span 3;
+}
+
+/* 4fr x 2fr = 1600 x 800 (extra wide) */
+.tile-xlarge {
+    grid-column: span 4;
+    grid-row: span 2;
+}
+
+/* Transparent PNG Tiles - background bleeds through */
+.tile-transparent .tile-image {
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Responsive filler tiles - swap between medium and small based on screen */
+.tile-filler-desktop {
+    display: block;
+}
+.tile-filler-mobile {
+    display: none;
+}
+
+/* Quote Tile */
+.tile-quote {
+    background-color: #EFE3C3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tile-quote blockquote {
+    color: #8B5A2B;
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Newsletter Section - CRITICAL CTA - distinctive coral/rose palette */
+.newsletter {
+    padding: 80px 20px;
+    text-align: center;
+    margin: 6px auto 0 auto;
+    max-width: 900px;
+    border-radius: 16px;
+    /* Slightly warmer border to hint at importance */
+    border: 1px solid rgba(255, 240, 235, 0.7);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-left-color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: rgba(200, 140, 120, 0.15);
+    border-right-color: rgba(200, 140, 120, 0.15);
+    /* Enhanced shadows with warm undertone */
+    box-shadow:
+        /* Soft warm glow around edges */
+        0 0 0 1px rgba(255, 245, 240, 0.4),
+        0 0 30px rgba(220, 160, 140, 0.12),
+        /* Outer drop shadow - bottom right */
+        6px 8px 24px rgba(90, 74, 50, 0.12),
+        12px 16px 40px rgba(139, 90, 43, 0.08),
+        /* Outer highlight - top left */
+        -2px -2px 16px rgba(255, 255, 255, 0.7),
+        /* Inset highlights for edge definition */
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 1px 0 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(90, 74, 50, 0.05),
+        inset -1px 0 0 rgba(90, 74, 50, 0.03);
+    /* Distinctive coral/rose orb palette - draws eye */
+    background-color: #FEFBE3;
+    background-image:
+        /* Soft coral orb - behind header text */
+        radial-gradient(ellipse 55% 50% at 50% 12%, rgba(230, 150, 140, 0.4) 0%, transparent 50%),
+        /* Rose accent orb - reinforcing header */
+        radial-gradient(ellipse 45% 40% at 55% 20%, rgba(240, 180, 170, 0.35) 0%, transparent 45%),
+        /* Warm blush orb - left side */
+        radial-gradient(ellipse 40% 45% at 8% 55%, rgba(235, 190, 180, 0.3) 0%, transparent 45%),
+        /* Soft teal orb - bottom center near subscribe button for contrast */
+        radial-gradient(ellipse 50% 45% at 50% 92%, rgba(140, 190, 185, 0.45) 0%, transparent 45%);
+}
+
+.newsletter-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter h2 {
+    color: #5a4a32;
+    font-size: 1.8em;
+    margin: 0 0 12px 0;
+}
+
+.newsletter p {
+    color: #8B5A2B;
+    margin: 0 0 24px 0;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.newsletter-form input {
+    flex: 1;
+    max-width: 300px;
+    padding: 14px 20px;
+    border: 1px solid #CFD8B3;
+    border-radius: 3px;
+    font-size: 1em;
+    font-family: inherit;
+    background-color: #FEFBE3;
+    color: #5a4a32;
+    transition: border-color 0.2s ease;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: #C58E56;
+}
+
+.newsletter-form input::placeholder {
+    color: #a89880;
+}
+
+.newsletter-form button {
+    padding: 14px 28px;
+    background-color: #CFD8B3;
+    color: #5a4a32;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #bcc9a0;
+}
+
+.newsletter-form button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.newsletter-success {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background-color: #CFD8B3;
+    color: #5a4a32;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+.newsletter-info {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background-color: #EFE3C3;
+    color: #5a4a32;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+.newsletter-error {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background-color: #ffebee;
+    color: #c62828;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+/* Responsive - Scale down but maintain aspect ratios */
+@media (max-width: 1650px) {
+    .masonry {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: calc((100vw - 34px) / 4); /* Maintain square base unit */
+    }
+}
+
+@media (max-width: 1024px) {
+    .masonry {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: calc((100vw - 28px) / 3);
+    }
+
+    /* Wide tiles need to fit in 3 columns */
+    .tile-wide {
+        grid-column: span 3;
+    }
+
+    /* Large tiles stay 2x2 */
+    .tile-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .masonry {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: calc((100vw - 22px) / 2);
+    }
+
+    /* Everything max 2 columns wide */
+    .tile-large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .tile-medium {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .tile-wide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    /* Tall becomes portrait in 2-col */
+    .tile-tall {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    /* Swap filler images - show small version */
+    .tile-filler-desktop {
+        display: none;
+    }
+    .tile-filler-mobile {
+        display: block;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter-form input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .masonry {
+        grid-template-columns: 1fr;
+        grid-auto-rows: calc(100vw - 16px);
+    }
+
+    /* Single column - everything 1 wide */
+    .tile-large,
+    .tile-medium,
+    .tile-small,
+    .tile-wide {
+        grid-column: span 1;
+    }
+
+    /* Maintain vertical ratios */
+    .tile-large {
+        grid-row: span 1; /* Square in single column */
+    }
+
+    .tile-portrait {
+        grid-row: span 2;
+    }
+
+    .tile-tall {
+        grid-row: span 3;
+    }
+
+    .tile-medium,
+    .tile-wide {
+        grid-row: span 1;
+    }
+}
