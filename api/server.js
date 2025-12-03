@@ -30,6 +30,11 @@ app.use('/products/images', express.static(path.join(__dirname, '../web/public/a
 // ----------------------------
 // Routes
 // ----------------------------
+// Health check endpoint
+app.get('/', (req, res) => {
+    res.json({ status: 'ok', message: 'Bread Kitchen API is running' });
+});
+
 app.use('/categories', categoriesRouter);
 app.use('/products', productsRouter);
 app.use('/newsletter', newsletterRouter);
