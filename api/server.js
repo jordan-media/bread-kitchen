@@ -12,7 +12,7 @@ const adminRouter = require('./routers/admin');
 const contactRouter = require('./routers/contact');
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // ----------------------------
 // CORS Configuration
