@@ -44,4 +44,6 @@ db.query("SELECT 1", (err) => {
     });
 });
 
+// Export both callback and promise versions
 module.exports = db;
+module.exports.promise = db.promise();

@@ -1,8 +1,9 @@
 // Admin.jsx - Main admin panel for email campaigns
 import { useState, useEffect } from 'react';
 import styles from './Admin.module.css';
+import { API_BASE_URL } from '../../api';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = API_BASE_URL;
 
 // ============================================
 // LOGIN COMPONENT

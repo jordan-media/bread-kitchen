@@ -2,8 +2,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import styles from './Unsubscribe.module.css';
+import { API_BASE_URL } from '../api';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = API_BASE_URL;
 
 export default function Unsubscribe() {
     const [searchParams] = useSearchParams();

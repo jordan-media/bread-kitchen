@@ -1,7 +1,7 @@
 // routers/newsletter.js
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const pool = require('../db').promise;
 
 // reCAPTCHA secret key from environment
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;

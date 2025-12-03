@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import s from './Home.module.css';
+import { API_BASE_URL } from '../api';
 
 // ============================================
 // RECAPTCHA v3 - Same key as Courses page
@@ -49,7 +50,7 @@ function Home() {
                 });
             }
 
-            const response = await fetch('http://localhost:3001/newsletter/subscribe', {
+            const response = await fetch(`${API_BASE_URL}/newsletter/subscribe`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, captchaToken })

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import s from './Contact.module.css';
+import { API_BASE_URL } from '../api';
 
 // ============================================
 // RECAPTCHA v3 - Same key as other pages
@@ -67,7 +68,7 @@ function Contact() {
                 });
             }
 
-            const response = await fetch('http://localhost:3001/contact/send', {
+            const response = await fetch(`${API_BASE_URL}/contact/send`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, captchaToken })
@@ -109,7 +110,7 @@ function Contact() {
                 });
             }
 
-            const response = await fetch('http://localhost:3001/newsletter/subscribe', {
+            const response = await fetch(`${API_BASE_URL}/newsletter/subscribe`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: signupEmail, captchaToken })
