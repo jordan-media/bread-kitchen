@@ -7,10 +7,15 @@ const { generateEmailHTML, generatePlainText } = require('../templates/emailTemp
 // Uses environment variables from .env file
 // ============================================
 const EMAIL_CONFIG = {
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 };
 
