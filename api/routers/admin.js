@@ -1,7 +1,7 @@
 // routers/admin.js
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
+const pool = require('../db').promise;
 const { sendTestEmail, sendCampaign, decodeUnsubscribeToken } = require('../services/emailService');
 
 // ============================================
@@ -72,13 +72,13 @@ router.get('/verify', requireAuth, (req, res) => {
 // GET /admin/stats
 router.get('/stats', requireAuth, async (req, res) => {
     try {
-        const [subscribers] = await db.promise().query(
+        const [subscribers] = await pool.query(
             'SELECT COUNT(*) as count FROM newsletter_subscribers'
         );
-        const [campaigns] = await db.promise().query(
+        const [campaigns] = await pool.query(
             'SELECT COUNT(*) as count FROM email_campaigns WHERE sent_at IS NOT NULL'
         );
-        const [lastCampaign] = await db.promise().query(
+        const [lastCampaign] = await pool.query(
             'SELECT sent_at, recipient_count FROM email_campaigns WHERE sent_at IS NOT NULL ORDER BY sent_at DESC LIMIT 1'
         );
 
@@ -100,7 +100,7 @@ router.get('/stats', requireAuth, async (req, res) => {
 // GET /admin/subscribers
 router.get('/subscribers', requireAuth, async (req, res) => {
     try {
-        const [rows] = await db.promise().query(
+        const [rows] = await pool.query(
             'SELECT id, email, subscribed_at FROM newsletter_subscribers ORDER BY subscribed_at DESC'
         );
         res.json(rows);
@@ -112,7 +112,7 @@ router.get('/subscribers', requireAuth, async (req, res) => {
 // DELETE /admin/subscribers/:id
 router.delete('/subscribers/:id', requireAuth, async (req, res) => {
     try {
-        const [result] = await db.promise().query(
+        const [result] = await pool.query(
             'DELETE FROM newsletter_subscribers WHERE id = ?',
             [req.params.id]
         );
@@ -130,7 +130,7 @@ router.delete('/subscribers/:id', requireAuth, async (req, res) => {
 // GET /admin/subscribers/export - Export as CSV
 router.get('/subscribers/export', requireAuth, async (req, res) => {
     try {
-        const [rows] = await db.promise().query(
+        const [rows] = await pool.query(
             'SELECT email, subscribed_at FROM newsletter_subscribers ORDER BY subscribed_at DESC'
         );
 
@@ -152,7 +152,7 @@ router.get('/subscribers/export', requireAuth, async (req, res) => {
 // GET /admin/campaigns
 router.get('/campaigns', requireAuth, async (req, res) => {
     try {
-        const [rows] = await db.promise().query(
+        const [rows] = await pool.query(
             'SELECT * FROM email_campaigns ORDER BY created_at DESC'
         );
         res.json(rows);
@@ -164,7 +164,7 @@ router.get('/campaigns', requireAuth, async (req, res) => {
 // GET /admin/campaigns/:id
 router.get('/campaigns/:id', requireAuth, async (req, res) => {
     try {
-        const [campaigns] = await db.promise().query(
+        const [campaigns] = await pool.query(
             'SELECT * FROM email_campaigns WHERE id = ?',
             [req.params.id]
         );
@@ -174,7 +174,7 @@ router.get('/campaigns/:id', requireAuth, async (req, res) => {
         }
 
         // Get campaign items with product details
-        const [items] = await db.promise().query(`
+        const [items] = await pool.query(`
             SELECT
                 eci.*,
                 p.name_en,
@@ -208,7 +208,7 @@ router.post('/campaigns', requireAuth, async (req, res) => {
 
     try {
         // Create campaign
-        const [result] = await db.promise().query(
+        const [result] = await pool.query(
             'INSERT INTO email_campaigns (subject, intro_text, pickup_date, pickup_time, created_at) VALUES (?, ?, ?, ?, NOW())',
             [subject, intro_text || null, pickup_date, pickup_time]
         );
@@ -218,7 +218,7 @@ router.post('/campaigns', requireAuth, async (req, res) => {
         // Add items
         if (items && items.length > 0) {
             for (let i = 0; i < items.length; i++) {
-                await db.promise().query(
+                await pool.query(
                     'INSERT INTO email_campaign_items (campaign_id, product_id, sort_order) VALUES (?, ?, ?)',
                     [campaignId, items[i].product_id, i]
                 );
@@ -238,7 +238,7 @@ router.put('/campaigns/:id', requireAuth, async (req, res) => {
 
     try {
         // Check if campaign exists and hasn't been sent
-        const [existing] = await db.promise().query(
+        const [existing] = await pool.query(
             'SELECT sent_at FROM email_campaigns WHERE id = ?',
             [req.params.id]
         );
@@ -252,17 +252,17 @@ router.put('/campaigns/:id', requireAuth, async (req, res) => {
         }
 
         // Update campaign
-        await db.promise().query(
+        await pool.query(
             'UPDATE email_campaigns SET subject = ?, intro_text = ?, pickup_date = ?, pickup_time = ? WHERE id = ?',
             [subject, intro_text || null, pickup_date, pickup_time, req.params.id]
         );
 
         // Update items - delete old, insert new
-        await db.promise().query('DELETE FROM email_campaign_items WHERE campaign_id = ?', [req.params.id]);
+        await pool.query('DELETE FROM email_campaign_items WHERE campaign_id = ?', [req.params.id]);
 
         if (items && items.length > 0) {
             for (let i = 0; i < items.length; i++) {
-                await db.promise().query(
+                await pool.query(
                     'INSERT INTO email_campaign_items (campaign_id, product_id, sort_order) VALUES (?, ?, ?)',
                     [req.params.id, items[i].product_id, i]
                 );
@@ -279,8 +279,8 @@ router.put('/campaigns/:id', requireAuth, async (req, res) => {
 router.delete('/campaigns/:id', requireAuth, async (req, res) => {
     try {
         // Delete items first (foreign key)
-        await db.promise().query('DELETE FROM email_campaign_items WHERE campaign_id = ?', [req.params.id]);
-        await db.promise().query('DELETE FROM email_campaigns WHERE id = ?', [req.params.id]);
+        await pool.query('DELETE FROM email_campaign_items WHERE campaign_id = ?', [req.params.id]);
+        await pool.query('DELETE FROM email_campaigns WHERE id = ?', [req.params.id]);
 
         res.json({ success: true });
     } catch (error) {
@@ -302,7 +302,7 @@ router.post('/campaigns/:id/send-test', requireAuth, async (req, res) => {
 
     try {
         // Get campaign with items
-        const [campaigns] = await db.promise().query(
+        const [campaigns] = await pool.query(
             'SELECT * FROM email_campaigns WHERE id = ?',
             [req.params.id]
         );
@@ -311,7 +311,7 @@ router.post('/campaigns/:id/send-test', requireAuth, async (req, res) => {
             return res.status(404).json({ error: 'Campaign not found' });
         }
 
-        const [items] = await db.promise().query(`
+        const [items] = await pool.query(`
             SELECT
                 p.name_en,
                 p.name_ja,
@@ -341,7 +341,7 @@ router.post('/campaigns/:id/send-test', requireAuth, async (req, res) => {
 router.post('/campaigns/:id/send', requireAuth, async (req, res) => {
     try {
         // Get campaign
-        const [campaigns] = await db.promise().query(
+        const [campaigns] = await pool.query(
             'SELECT * FROM email_campaigns WHERE id = ?',
             [req.params.id]
         );
@@ -355,7 +355,7 @@ router.post('/campaigns/:id/send', requireAuth, async (req, res) => {
         }
 
         // Get items with product details
-        const [items] = await db.promise().query(`
+        const [items] = await pool.query(`
             SELECT
                 p.name_en,
                 p.name_ja,
@@ -369,7 +369,7 @@ router.post('/campaigns/:id/send', requireAuth, async (req, res) => {
         `, [req.params.id]);
 
         // Get subscribers
-        const [subscribers] = await db.promise().query(
+        const [subscribers] = await pool.query(
             'SELECT email FROM newsletter_subscribers'
         );
 
@@ -381,7 +381,7 @@ router.post('/campaigns/:id/send', requireAuth, async (req, res) => {
         const result = await sendCampaign(campaigns[0], items, subscribers);
 
         // Update campaign as sent
-        await db.promise().query(
+        await pool.query(
             'UPDATE email_campaigns SET sent_at = NOW(), recipient_count = ? WHERE id = ?',
             [result.sent, req.params.id]
         );
@@ -413,7 +413,7 @@ router.post('/unsubscribe', async (req, res) => {
     }
 
     try {
-        const [result] = await db.promise().query(
+        const [result] = await pool.query(
             'DELETE FROM newsletter_subscribers WHERE email = ?',
             [email]
         );
@@ -431,7 +431,7 @@ router.post('/unsubscribe', async (req, res) => {
 // GET /admin/products - Get all products for dropdown
 router.get('/products', requireAuth, async (req, res) => {
     try {
-        const [rows] = await db.promise().query(`
+        const [rows] = await pool.query(`
             SELECT
                 p.product_id,
                 p.name_en,
