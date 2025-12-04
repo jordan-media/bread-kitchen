@@ -2,6 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db').promise;
+const { Resend } = require('resend');
+
+// Initialize Resend with API key
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Frontend URL for unsubscribe link
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://bread-kitchen.jordanasseff.ca';
 
 // reCAPTCHA secret key from environment
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
@@ -75,6 +82,53 @@ router.post('/subscribe', async (req, res) => {
             'INSERT INTO newsletter_subscribers (email, subscribed_at) VALUES (?, NOW())',
             [email]
         );
+
+        // Send confirmation email
+        const unsubscribeToken = Buffer.from(email).toString('base64');
+        const unsubscribeUrl = `${FRONTEND_URL}/unsubscribe?token=${unsubscribeToken}`;
+
+        try {
+            console.log('Attempting to send confirmation email to:', email);
+            const emailResult = await resend.emails.send({
+                from: 'Bread Kitchen <onboarding@resend.dev>',
+                to: [email],
+                subject: 'Welcome to Bread Kitchen!',
+                html: `
+                    <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                        <h2 style="color: #5a4a32; border-bottom: 2px solid #CFD8B3; padding-bottom: 10px;">
+                            Welcome to Bread Kitchen!
+                        </h2>
+
+                        <p style="color: #5a4a32; line-height: 1.6;">
+                            This is just a confirmation email to show a successful email sign up for Bread Kitchen.
+                        </p>
+
+                        <p style="color: #5a4a32; line-height: 1.6;">
+                            <strong>You do not need to reply to this email.</strong>
+                        </p>
+
+                        <p style="color: #5a4a32; line-height: 1.6;">
+                            We will send regular emails for fresh bread available for pick up.
+                        </p>
+
+                        <p style="color: #8B5A2B; font-size: 1.1em; margin-top: 20px;">
+                            Stay tuned and stay hungry! 🍞
+                        </p>
+
+                        <hr style="border: none; border-top: 1px solid #CFD8B3; margin: 30px 0;" />
+
+                        <p style="color: #999; font-size: 0.85em;">
+                            If you did not sign up for this, please
+                            <a href="${unsubscribeUrl}" style="color: #C58E56;">unsubscribe here</a>.
+                        </p>
+                    </div>
+                `
+            });
+            console.log('Confirmation email sent to:', email, 'Result:', JSON.stringify(emailResult));
+        } catch (emailError) {
+            // Don't fail the signup if email fails - they're still subscribed
+            console.error('Failed to send confirmation email:', emailError.message || emailError);
+        }
 
         res.json({ success: true, message: 'Successfully subscribed!' });
 
