@@ -71,7 +71,7 @@ router.post('/send', async (req, res) => {
 
         // Send email using Resend
         const { data, error } = await resend.emails.send({
-            from: 'Bread Kitchen <onboarding@resend.dev>',
+            from: 'Bread Kitchen <hello@bread-kitchen.jordanasseff.ca>',
             to: [process.env.EMAIL_USER],
             replyTo: email,
             subject: `[Bread Kitchen] ${subjectLine}`,

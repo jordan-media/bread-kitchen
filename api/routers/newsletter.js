@@ -98,7 +98,7 @@ router.post('/subscribe', async (req, res) => {
         try {
             console.log('Attempting to send confirmation email to:', email);
             const { data, error } = await resend.emails.send({
-                from: 'Bread Kitchen <onboarding@resend.dev>',
+                from: 'Bread Kitchen <hello@bread-kitchen.jordanasseff.ca>',
                 to: [email],
                 subject: 'Welcome to Bread Kitchen!',
                 html: `
