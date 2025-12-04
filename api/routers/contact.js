@@ -1,24 +1,13 @@
 // routers/contact.js
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
+
+// Initialize Resend with API key
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // reCAPTCHA secret key from environment
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
-
-// Email transporter (same config as admin campaigns)
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
 
 // Verify reCAPTCHA v3 token with Google
 async function verifyRecaptcha(token) {
@@ -80,10 +69,10 @@ router.post('/send', async (req, res) => {
 
         const subjectLine = subjectMap[subject] || 'Contact Form Message';
 
-        // Send email to bakery
-        await transporter.sendMail({
-            from: `"Bread Kitchen Website" <${process.env.EMAIL_USER}>`,
-            to: process.env.EMAIL_USER,
+        // Send email using Resend
+        const { data, error } = await resend.emails.send({
+            from: 'Bread Kitchen <onboarding@resend.dev>',
+            to: [process.env.EMAIL_USER],
             replyTo: email,
             subject: `[Bread Kitchen] ${subjectLine}`,
             html: `
@@ -121,6 +110,12 @@ router.post('/send', async (req, res) => {
             `
         });
 
+        if (error) {
+            console.error('Resend error:', error);
+            return res.status(500).json({ error: 'Failed to send message' });
+        }
+
+        console.log('Email sent successfully:', data);
         res.json({ success: true, message: 'Message sent successfully!' });
 
     } catch (error) {
