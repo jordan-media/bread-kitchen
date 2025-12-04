@@ -39,12 +39,18 @@ async function verifyRecaptcha(token) {
 
 // POST /newsletter/subscribe
 router.post('/subscribe', async (req, res) => {
+    console.log('=== NEWSLETTER SUBSCRIBE REQUEST ===');
+    console.log('Body:', JSON.stringify(req.body));
+
     const { email, captchaToken } = req.body;
 
     // Validate input
     if (!email) {
+        console.log('Error: No email provided');
         return res.status(400).json({ error: 'Email is required' });
     }
+
+    console.log('Processing subscription for:', email);
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -78,10 +84,12 @@ router.post('/subscribe', async (req, res) => {
         }
 
         // Insert new subscriber
+        console.log('Inserting new subscriber into database...');
         await pool.query(
             'INSERT INTO newsletter_subscribers (email, subscribed_at) VALUES (?, NOW())',
             [email]
         );
+        console.log('Subscriber inserted successfully');
 
         // Send confirmation email
         const unsubscribeToken = Buffer.from(email).toString('base64');
@@ -89,7 +97,7 @@ router.post('/subscribe', async (req, res) => {
 
         try {
             console.log('Attempting to send confirmation email to:', email);
-            const emailResult = await resend.emails.send({
+            const { data, error } = await resend.emails.send({
                 from: 'Bread Kitchen <onboarding@resend.dev>',
                 to: [email],
                 subject: 'Welcome to Bread Kitchen!',
@@ -124,7 +132,12 @@ router.post('/subscribe', async (req, res) => {
                     </div>
                 `
             });
-            console.log('Confirmation email sent to:', email, 'Result:', JSON.stringify(emailResult));
+
+            if (error) {
+                console.error('Resend error:', error);
+            } else {
+                console.log('Confirmation email sent successfully:', data);
+            }
         } catch (emailError) {
             // Don't fail the signup if email fails - they're still subscribed
             console.error('Failed to send confirmation email:', emailError.message || emailError);
