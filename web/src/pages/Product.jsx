@@ -76,8 +76,8 @@ function Product() {
                     <div className={p['image-container']}>
                         {productData.images && productData.images.length > 0 ? (
                             <>
-                                <img 
-                                    src={`http://localhost:5000/images/${productData.images[currentImageIndex].image_path}`}
+                                <img
+                                    src={`/assets/${productData.images[currentImageIndex].image_path}`}
                                     alt={productData.images[currentImageIndex].alt_text_en || productData.name_en}
                                 />
                                 {productData.images.length > 1 && (
@@ -89,8 +89,8 @@ function Product() {
                                 )}
                             </>
                         ) : (
-                            <img 
-                                src={`http://localhost:5000/images/placeholder.jpg`}
+                            <img
+                                src={`/assets/placeholder.png`}
                                 alt={productData.name_en}
                             />
                         )}

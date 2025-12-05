@@ -339,7 +339,7 @@ function EmailPreview({ campaign, items, onClose }) {
                                         borderBottom: `1px solid ${colors.sage}`
                                     }}>
                                         <img
-                                            src={`${API_URL}/products/images/${item.image}`}
+                                            src={`/assets/${item.image}`}
                                             alt={item.name_en}
                                             style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '4px' }}
                                         />
@@ -761,7 +761,7 @@ function CampaignEditor({ token, campaignId, onNavigate }) {
                                 )}
                                 {item.image ? (
                                     <img
-                                        src={`${API_URL}/products/images/${item.image}`}
+                                        src={`/assets/${item.image}`}
                                         alt={item.name_en}
                                     />
                                 ) : (

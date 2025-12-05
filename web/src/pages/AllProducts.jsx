@@ -101,7 +101,7 @@ function AllProducts() {
                             {product.image ? (
                                 <img
                                     className={s['product-image']}
-                                    src={`${API_BASE_URL}/products/images/${product.image}`}
+                                    src={`/assets/${product.image}`}
                                     alt={isJapanese ? product.name_ja : product.name_en}
                                 />
                             ) : (

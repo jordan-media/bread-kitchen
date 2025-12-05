@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import m from "./AddProductModalContent.module.css";
 import g from "../global.module.css";
+import { API_BASE_URL } from '../api';
  
 function AddProductModalContent({ onClose, onProductAdded }) {
  
@@ -32,7 +33,7 @@ function AddProductModalContent({ onClose, onProductAdded }) {
  
     // Load categories from API on initial render
     useEffect(() => {
-        fetch("http://localhost:3000/categories")
+        fetch(`${API_BASE_URL}/categories`)
             .then((res) => res.json())
             .then((data) => {
                 setDbCategories(data);
@@ -62,7 +63,7 @@ function AddProductModalContent({ onClose, onProductAdded }) {
  
         // If category is new, create it first
         if (isNewCategory) {
-            const categoryResponse = await fetch("http://localhost:3000/categories", {
+            const categoryResponse = await fetch(`${API_BASE_URL}/categories`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
@@ -97,7 +98,7 @@ function AddProductModalContent({ onClose, onProductAdded }) {
         }
  
         // Send POST request to create new product
-        const productResponse = await fetch("http://localhost:3000/products", {
+        const productResponse = await fetch(`${API_BASE_URL}/products`, {
             method: "POST",
             body: formData
         });
