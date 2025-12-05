@@ -1,62 +1,42 @@
 // services/emailService.js
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const { generateEmailHTML, generatePlainText } = require('../templates/emailTemplate');
 
 // ============================================
 // EMAIL CONFIGURATION
-// Uses environment variables from .env file
+// Uses Resend API for transactional emails
 // ============================================
-const EMAIL_CONFIG = {
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-};
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const SENDER_NAME = 'Bread Kitchen';
-const SENDER_EMAIL = process.env.EMAIL_USER;
-const BASE_URL = 'http://localhost:5173';  // Your frontend URL
+const SENDER_EMAIL = 'hello@bread-kitchen.jordanasseff.ca';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://bread-kitchen.jordanasseff.ca';
 // ============================================
-
-// Create reusable transporter
-const transporter = nodemailer.createTransport(EMAIL_CONFIG);
-
-// Verify connection on startup
-transporter.verify((error, success) => {
-    if (error) {
-        console.log('❌ Email service error:', error.message);
-        console.log('   Make sure to set up Gmail App Password');
-    } else {
-        console.log('✅ Email service ready');
-    }
-});
 
 // Generate unsubscribe URL with encoded email
 function getUnsubscribeUrl(email) {
     const token = Buffer.from(email).toString('base64');
-    return `${BASE_URL}/unsubscribe?token=${token}`;
+    return `${FRONTEND_URL}/unsubscribe?token=${token}`;
 }
 
-// Send a single email
+// Send a single email using Resend
 async function sendEmail(to, subject, html, text) {
-    const mailOptions = {
-        from: `"${SENDER_NAME}" <${SENDER_EMAIL}>`,
-        to,
-        subject,
-        html,
-        text
-    };
-
     try {
-        const result = await transporter.sendMail(mailOptions);
-        console.log(`✅ Email sent to ${to}`);
-        return { success: true, messageId: result.messageId };
+        const { data, error } = await resend.emails.send({
+            from: `${SENDER_NAME} <${SENDER_EMAIL}>`,
+            to: [to],
+            subject,
+            html,
+            text
+        });
+
+        if (error) {
+            console.error(`❌ Failed to send to ${to}:`, error);
+            return { success: false, error: error.message };
+        }
+
+        console.log(`✅ Email sent to ${to}`, data);
+        return { success: true, messageId: data.id };
     } catch (error) {
         console.error(`❌ Failed to send to ${to}:`, error.message);
         return { success: false, error: error.message };
