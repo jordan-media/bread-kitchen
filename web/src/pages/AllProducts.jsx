@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import g from '../global.module.css';
 import s from "./AllProducts.module.css";
 import { API_BASE_URL } from '../api';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../contexts/LanguageContext';
 
 function AllProducts() {
+    const { t } = useTranslation('products');
+    const { t: tCommon } = useTranslation('common');
+    const { language } = useLanguage();
 
     const [products, setProducts] = useState([]);
-    const [language, setLanguage] = useState('ja'); // Default to Japanese
     const [filters, setFilters] = useState({
         dairyFree: false,
         category: 'all'
@@ -44,20 +48,10 @@ function AllProducts() {
         <main className={g['container']}>
             <div className={s['page-header']}>
                 <div>
-                    <h2>{isJapanese ? 'ブレッドキッチン' : 'Bread Kitchen'}</h2>
-                    <p className={s['page-subtitle']}>{isJapanese ? '焼きたてのパン' : 'Freshly baked artisan breads'}</p>
-                    <p className={s['page-blurb']}>
-                        {isJapanese
-                            ? 'こちらは私たちが心を込めて焼き上げるパンのコレクションです。毎週、厳選したパンをご用意しております。メールでその週のラインナップをお届けしますので、お気に入りをご予約の上、焼きたてをお受け取りください。'
-                            : 'Explore our collection of handcrafted breads, each made with care and the finest ingredients. Select items are available for local pickup each week—subscribe to our mailing list to receive our current offerings and reserve your favourites fresh from the oven.'}
-                    </p>
+                    <h2>{t('page.title')}</h2>
+                    <p className={s['page-subtitle']}>{t('page.subtitle')}</p>
+                    <p className={s['page-blurb']}>{t('page.description')}</p>
                 </div>
-                <button
-                    className={s['language-toggle']}
-                    onClick={() => setLanguage(isJapanese ? 'en' : 'ja')}
-                >
-                    {isJapanese ? 'English' : '日本語'}
-                </button>
             </div>
 
             {/* Filters */}
@@ -66,7 +60,7 @@ function AllProducts() {
                     className={`${s['filter-btn']} ${filters.dairyFree ? s['filter-active'] : ''}`}
                     onClick={() => setFilters({ ...filters, dairyFree: !filters.dairyFree })}
                 >
-                    {isJapanese ? '乳製品不使用' : 'Dairy Free'}
+                    {t('filters.dairyFree')}
                 </button>
 
                 <select
@@ -74,7 +68,7 @@ function AllProducts() {
                     value={filters.category}
                     onChange={(e) => setFilters({ ...filters, category: e.target.value })}
                 >
-                    <option value="all">{isJapanese ? 'すべてのカテゴリー' : 'All Categories'}</option>
+                    <option value="all">{t('filters.allCategories')}</option>
                     {categories.map(cat => (
                         <option key={cat} value={cat}>
                             {isJapanese
@@ -89,7 +83,7 @@ function AllProducts() {
                         className={s['filter-clear']}
                         onClick={() => setFilters({ dairyFree: false, category: 'all' })}
                     >
-                        {isJapanese ? 'クリア' : 'Clear'}
+                        {t('filters.clear')}
                     </button>
                 )}
             </div>
@@ -107,7 +101,7 @@ function AllProducts() {
                             ) : (
                                 <div className={s['image-placeholder']}>
                                     <img src="/images/22Artboard 8.png" alt="Coming soon" />
-                                    <span>{isJapanese ? '画像準備中' : 'Image coming soon'}</span>
+                                    <span>{t('product.imageComingSoon')}</span>
                                 </div>
                             )}
                             <div className={s['product-content']}>
@@ -124,19 +118,19 @@ function AllProducts() {
 
                                 <div className={s['allergens']}>
                                     {product.contains_dairy === 1 && (
-                                        <span className={s['allergen-tag']}>{isJapanese ? '乳製品' : 'Dairy'}</span>
+                                        <span className={s['allergen-tag']}>{tCommon('allergens.dairy')}</span>
                                     )}
                                     {product.contains_eggs === 1 && (
-                                        <span className={s['allergen-tag']}>{isJapanese ? '卵' : 'Eggs'}</span>
+                                        <span className={s['allergen-tag']}>{tCommon('allergens.eggs')}</span>
                                     )}
                                     {product.contains_nuts === 1 && (
-                                        <span className={s['allergen-tag']}>{isJapanese ? 'ナッツ' : 'Nuts'}</span>
+                                        <span className={s['allergen-tag']}>{tCommon('allergens.nuts')}</span>
                                     )}
                                 </div>
 
                                 <div className={s['product-actions']}>
                                     <Link to={`/products/${product.product_id}`} className={s['view-button']}>
-                                        {isJapanese ? '詳細を見る' : 'View Details'}
+                                        {t('product.viewDetails')}
                                     </Link>
                                 </div>
                             </div>

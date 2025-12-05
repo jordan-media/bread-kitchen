@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import s from './Courses.module.css';
 import { API_BASE_URL } from '../api';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // ============================================
 // SEASONAL MENU - Update this section quarterly
@@ -31,6 +33,10 @@ const RECAPTCHA_SITE_KEY = "6Le4Kx0sAAAAAPB0_JDv-THqzHkU-G4jc9sXS708";
 // ============================================
 
 function Courses() {
+    const { t } = useTranslation('courses');
+    const { t: tCommon } = useTranslation('common');
+    const { language } = useLanguage();
+
     const [email, setEmail] = useState('');
     const [submitStatus, setSubmitStatus] = useState(null);
     const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
@@ -369,11 +375,10 @@ ${inquiryData.message || 'No additional message'}`,
             {/* Hero Section */}
             <section className={s['hero']}>
                 <div className={s['hero-content']}>
-                    <h1>パン教室</h1>
-                    <p className={s['hero-subtitle']}>Bread Baking Courses</p>
+                    <h1>{t('page.japaneseTitle')}</h1>
+                    <p className={s['hero-subtitle']}>{t('page.title')}</p>
                     <p className={s['hero-description']}>
-                        Three courses available for beginners and experienced bakers alike.
-                        Menus change every three months - check the latest offerings before booking.
+                        {t('page.description')}
                     </p>
                 </div>
             </section>
@@ -409,7 +414,7 @@ ${inquiryData.message || 'No additional message'}`,
                             <button
                                 onClick={() => openInquiryModal(courses[0].title + ' - ' + courses[0].titleJa)}
                                 className={s['course-button']}
-                            >Inquire</button>
+                            >{t('booking.inquiry')}</button>
                         </div>
                     </div>
                 </div>
@@ -444,7 +449,7 @@ ${inquiryData.message || 'No additional message'}`,
                             <button
                                 onClick={() => openInquiryModal(courses[1].title + ' - ' + courses[1].titleJa)}
                                 className={s['course-button']}
-                            >Inquire</button>
+                            >{t('booking.inquiry')}</button>
                         </div>
                     </div>
                 </div>
@@ -520,19 +525,19 @@ ${inquiryData.message || 'No additional message'}`,
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                             />
-                            <button type="submit">Subscribe</button>
+                            <button type="submit">{tCommon('newsletter.subscribe')}</button>
                         </div>
                         {submitStatus === 'captcha' && (
-                            <p className={s['form-error']}>reCAPTCHA not loaded. Please refresh and try again.</p>
+                            <p className={s['form-error']}>{tCommon('errors.captcha')}</p>
                         )}
                         {submitStatus === 'success' && (
-                            <p className={s['form-success']}>Thank you! You're now subscribed.</p>
+                            <p className={s['form-success']}>{tCommon('newsletter.success')}</p>
                         )}
                         {submitStatus === 'error' && (
-                            <p className={s['form-error']}>Something went wrong. Please try again.</p>
+                            <p className={s['form-error']}>{tCommon('errors.generic')}</p>
                         )}
                         {submitStatus === 'Email already subscribed' && (
-                            <p className={s['form-info']}>You're already subscribed!</p>
+                            <p className={s['form-info']}>{tCommon('newsletter.alreadySubscribed')}</p>
                         )}
                     </form>
                 </div>
@@ -567,7 +572,7 @@ ${inquiryData.message || 'No additional message'}`,
                             <button
                                 onClick={() => openInquiryModal(courses[2].title + ' - ' + courses[2].titleJa)}
                                 className={s['course-button-secondary']}
-                            >Inquire</button>
+                            >{t('booking.inquiry')}</button>
                         </div>
                     </div>
                 </div>
@@ -714,15 +719,15 @@ ${inquiryData.message || 'No additional message'}`,
                                             required
                                         >
                                             <option value="">Select time</option>
-                                            <option value="Morning (9:00-12:00)">Morning (9:00-12:00)</option>
-                                            <option value="Afternoon (13:00-16:00)">Afternoon (13:00-16:00)</option>
-                                            <option value="Flexible">Flexible</option>
+                                            <option value="Morning (9:00-12:00)">{t('timeSlots.morning')}</option>
+                                            <option value="Afternoon (13:00-16:00)">{t('timeSlots.afternoon')}</option>
+                                            <option value="Flexible">{t('timeSlots.flexible')}</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div className={s['form-group']}>
-                                    <label htmlFor="inquiry-participants">Number of Participants</label>
+                                    <label htmlFor="inquiry-participants">{t('booking.participants')}</label>
                                     <select
                                         id="inquiry-participants"
                                         name="participants"
@@ -730,15 +735,15 @@ ${inquiryData.message || 'No additional message'}`,
                                         onChange={handleInquiryChange}
                                         required
                                     >
-                                        <option value="1">1 person</option>
-                                        <option value="2">2 people</option>
-                                        <option value="3">3 people</option>
-                                        <option value="4">4 people</option>
+                                        <option value="1">{t('participants.one')}</option>
+                                        <option value="2">{t('participants.two')}</option>
+                                        <option value="3">{t('participants.three')}</option>
+                                        <option value="4">{t('participants.four')}</option>
                                     </select>
                                 </div>
 
                                 <div className={s['form-group']}>
-                                    <label htmlFor="inquiry-message">Additional Message (optional)</label>
+                                    <label htmlFor="inquiry-message">{t('booking.additionalMessage')}</label>
                                     <textarea
                                         id="inquiry-message"
                                         name="message"
@@ -750,11 +755,11 @@ ${inquiryData.message || 'No additional message'}`,
                                 </div>
 
                                 <button type="submit" disabled={inquiryStatus === 'loading'}>
-                                    {inquiryStatus === 'loading' ? 'Sending...' : 'Send Inquiry'}
+                                    {inquiryStatus === 'loading' ? t('booking.sending') : t('booking.sendInquiry')}
                                 </button>
 
                                 {inquiryStatus === 'error' && (
-                                    <p className={s['modal-error']}>Something went wrong. Please try again.</p>
+                                    <p className={s['modal-error']}>{tCommon('errors.generic')}</p>
                                 )}
                             </form>
                         )}

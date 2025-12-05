@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Bread Kitchen",
+    "subtitle": "Freshly Baked Artisan Breads",
+    "description": "Handcrafted with love using traditional Japanese and European techniques"
+  },
+  "newsletter": {
+    "title": "Weekly Fresh Bread",
+    "subtitle": "Sign up to receive our weekly bread list and reserve your favourites"
+  },
+  "categories": {
+    "artisan": "Artisan",
+    "sweet": "Sweet",
+    "classic": "Classic",
+    "premium": "Premium",
+    "signature": "Signature",
+    "freshBaked": "Fresh Baked",
+    "tropical": "Tropical",
+    "baker": "Baker",
+    "japanese": "Japanese",
+    "german": "German",
+    "seasonal": "Seasonal",
+    "french": "French",
+    "bagel": "Bagel",
+    "matcha": "Matcha"
+  },
+  "cta": {
+    "viewMenu": "View Full Menu",
+    "viewCourses": "View Courses",
+    "learnMore": "Learn More"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "page": {
+    "title": "Bread Kitchen",
+    "subtitle": "Freshly baked artisan breads",
+    "description": "Explore our collection of handcrafted breads, each made with care and the finest ingredients. Select items are available for local pickup each week—subscribe to our mailing list to receive our current offerings and reserve your favourites fresh from the oven."
+  },
+  "filters": {
+    "dairyFree": "Dairy Free",
+    "allCategories": "All Categories",
+    "clear": "Clear"
+  },
+  "product": {
+    "viewDetails": "View Details",
+    "imageComingSoon": "Image coming soon",
+    "backToProducts": "Back to Products",
+    "selectSize": "Select Size",
+    "description": "Description",
+    "productDetails": "Product Details",
+    "weight": "Weight",
+    "dimensions": "Dimensions",
+    "sku": "SKU",
+    "category": "Category",
+    "method": "Method"
+  },
+  "stock": {
+    "madeToOrder": "Made to order",
+    "inStock": "In stock: {{count}}",
+    "outOfStock": "Out of stock"
+  },
+  "languageToggle": "English"
+}

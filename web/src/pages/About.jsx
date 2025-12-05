@@ -1,11 +1,14 @@
 import s from './About.module.css';
+import { useTranslation } from '../hooks/useTranslation';
 
 function About() {
+    const { t } = useTranslation('about');
+
     return (
         <main className={s['about']}>
             <section className={s['hero']}>
-                <h1>About Us</h1>
-                <p>Our passion for baking, your daily bread</p>
+                <h1>{t('hero.title')}</h1>
+                <p>{t('hero.subtitle')}</p>
             </section>
 
             <section className={s['baker']}>
@@ -15,13 +18,9 @@ function About() {
                             <div className={s['image-placeholder']} style={{backgroundImage: 'url(/images/keiko.jpg)'}}></div>
                         </div>
                         <div className={s['baker-content']}>
-                            <h2>Meet the Baker</h2>
-                            <p>
-                                Our head baker brings years of experience and a deep love for the craft. Trained in both Japanese and European techniques, each creation reflects a blend of traditions and innovation.
-                            </p>
-                            <p>
-                                "Baking is my meditation. There's something magical about transforming simple ingredients into something that brings people together."
-                            </p>
+                            <h2>{t('baker.title')}</h2>
+                            <p>{t('baker.bio')}</p>
+                            <p>"{t('baker.philosophy')}"</p>
                         </div>
                     </div>
                 </div>
@@ -29,22 +28,22 @@ function About() {
 
             <section className={s['values']}>
                 <div className={s['container']}>
-                    <h2>What We Believe</h2>
+                    <h2>{t('values.title')}</h2>
                     <div className={s['values-grid']}>
                         <div className={s['value-card']}>
                             <span className={s['value-icon']}>🌾</span>
-                            <h3>Quality Ingredients</h3>
-                            <p>We source the finest flours and ingredients, supporting local suppliers whenever possible.</p>
+                            <h3>{t('values.quality.title')}</h3>
+                            <p>{t('values.quality.description')}</p>
                         </div>
                         <div className={s['value-card']}>
                             <span className={s['value-icon']}>⏰</span>
-                            <h3>Traditional Methods</h3>
-                            <p>Slow fermentation, hand-shaping, and patience create bread with depth and character.</p>
+                            <h3>{t('values.traditional.title')}</h3>
+                            <p>{t('values.traditional.description')}</p>
                         </div>
                         <div className={s['value-card']}>
                             <span className={s['value-icon']}>❤️</span>
-                            <h3>Made with Love</h3>
-                            <p>Every loaf is baked with care and attention, as if we were making it for our own family.</p>
+                            <h3>{t('values.love.title')}</h3>
+                            <p>{t('values.love.description')}</p>
                         </div>
                     </div>
                 </div>
@@ -54,13 +53,9 @@ function About() {
                 <div className={s['container']}>
                     <div className={s['story-grid']}>
                         <div className={s['story-content']}>
-                            <h2>Our Story</h2>
-                            <p>
-                                Bread Kitchen started with a simple dream: to share the joy of freshly baked bread with our community. What began as a small home kitchen has grown into a beloved bakery, but our commitment to quality remains unchanged.
-                            </p>
-                            <p>
-                                Every loaf we bake is crafted with care, using time-honored techniques and the finest ingredients. We believe that good bread takes time – there are no shortcuts to perfection.
-                            </p>
+                            <h2>{t('story.title')}</h2>
+                            <p>{t('story.paragraph1')}</p>
+                            <p>{t('story.paragraph2')}</p>
                         </div>
                         <div className={s['story-image']}>
                             <div className={s['image-placeholder']} style={{backgroundImage: 'url(/images/about.jpg)'}}></div>

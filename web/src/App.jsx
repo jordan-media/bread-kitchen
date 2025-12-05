@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -13,7 +14,7 @@ import Contact from './pages/Contact';
 import Admin from './pages/admin/Admin';
 import Unsubscribe from './pages/Unsubscribe';
 
-function App() {
+function AppContent() {
     const location = useLocation();
     const isAdminPage = location.pathname.startsWith('/admin');
     const isUnsubscribePage = location.pathname === '/unsubscribe';
@@ -35,6 +36,14 @@ function App() {
             </Routes>
             {!hideLayout && <Footer />}
         </>
+    );
+}
+
+function App() {
+    return (
+        <LanguageProvider>
+            <AppContent />
+        </LanguageProvider>
     );
 }
 

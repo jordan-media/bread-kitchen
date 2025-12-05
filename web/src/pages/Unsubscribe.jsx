@@ -3,10 +3,14 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import styles from './Unsubscribe.module.css';
 import { API_BASE_URL } from '../api';
+import { useTranslation } from '../hooks/useTranslation';
 
 const API_URL = API_BASE_URL;
 
 export default function Unsubscribe() {
+    const { t } = useTranslation('contact');
+    const { t: tCommon } = useTranslation('common');
+
     const [searchParams] = useSearchParams();
     const [status, setStatus] = useState('loading'); // loading, confirm, success, error
     const [email, setEmail] = useState('');
@@ -56,20 +60,20 @@ export default function Unsubscribe() {
                 <h1>Bread Kitchen</h1>
 
                 {status === 'loading' && (
-                    <p>Processing...</p>
+                    <p>{tCommon('buttons.loading')}</p>
                 )}
 
                 {status === 'confirm' && (
                     <>
-                        <h2>Unsubscribe</h2>
-                        <p>Are you sure you want to unsubscribe <strong>{email}</strong> from our newsletter?</p>
-                        <p className={styles.note}>You will no longer receive weekly bread updates.</p>
+                        <h2>{t('unsubscribe.title')}</h2>
+                        <p>{t('unsubscribe.confirm')} <strong>{email}</strong>?</p>
+                        <p className={styles.note}>{t('unsubscribe.note')}</p>
                         <div className={styles.actions}>
                             <button onClick={handleUnsubscribe} className={styles.btnConfirm}>
-                                Yes, Unsubscribe
+                                {t('unsubscribe.button')}
                             </button>
                             <Link to="/" className={styles.btnCancel}>
-                                Cancel
+                                {t('unsubscribe.cancel')}
                             </Link>
                         </div>
                     </>
@@ -77,22 +81,22 @@ export default function Unsubscribe() {
 
                 {status === 'success' && (
                     <>
-                        <h2>Unsubscribed</h2>
-                        <p>You have been successfully unsubscribed from our newsletter.</p>
-                        <p className={styles.note}>We're sorry to see you go!</p>
+                        <h2>{t('unsubscribe.successTitle')}</h2>
+                        <p>{t('unsubscribe.successMessage')}</p>
+                        <p className={styles.note}>{t('unsubscribe.successNote')}</p>
                         <Link to="/" className={styles.btnHome}>
-                            Return to Homepage
+                            {tCommon('buttons.returnHome')}
                         </Link>
                     </>
                 )}
 
                 {status === 'error' && (
                     <>
-                        <h2>Error</h2>
-                        <p>Something went wrong. The link may be invalid or expired.</p>
-                        <p className={styles.note}>If you need help, please contact us.</p>
+                        <h2>{t('unsubscribe.errorTitle')}</h2>
+                        <p>{t('unsubscribe.errorMessage')}</p>
+                        <p className={styles.note}>{t('unsubscribe.errorNote')}</p>
                         <Link to="/" className={styles.btnHome}>
-                            Return to Homepage
+                            {tCommon('buttons.returnHome')}
                         </Link>
                     </>
                 )}

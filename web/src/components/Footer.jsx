@@ -1,7 +1,10 @@
 import f from './Footer.module.css';
 import g from '../global.module.css';
+import { useTranslation } from '../hooks/useTranslation';
 
 function Footer () {
+  const { t } = useTranslation('common');
+
   return (
     <footer className={f['footer-bg']}>
         <div className={`${g['container']} ${f['footer-content']}`}>
@@ -14,12 +17,12 @@ function Footer () {
                     </div>
                 </div>
                 <div className={f['business-info']}>
-                    <p className={f['tagline']}>Baking bread since 1976</p>
-                    <p className={f['ownership']}>Family owned and operated</p>
+                    <p className={f['tagline']}>{t('footer.tagline')}</p>
+                    <p className={f['ownership']}>{t('footer.ownership')}</p>
                 </div>
             </div>
             <div className={f['footer-bottom']}>
-                <p className={f['copyright']}>© Since 2016 Bread Kitchen</p>
+                <p className={f['copyright']}>{t('footer.copyright')}</p>
             </div>
         </div>
     </footer>

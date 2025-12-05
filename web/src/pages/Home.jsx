@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import s from './Home.module.css';
 import { API_BASE_URL } from '../api';
+import { useTranslation } from '../hooks/useTranslation';
 
 // ============================================
 // RECAPTCHA v3 - Same key as Courses page
@@ -10,6 +11,8 @@ const RECAPTCHA_SITE_KEY = "6Le4Kx0sAAAAAPB0_JDv-THqzHkU-G4jc9sXS708";
 // ============================================
 
 function Home() {
+    const { t } = useTranslation('home');
+    const { t: tCommon } = useTranslation('common');
     const [email, setEmail] = useState('');
     const [submitStatus, setSubmitStatus] = useState(null); // null, 'loading', 'success', 'error', 'exists'
     const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
@@ -85,7 +88,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-large']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/baguette.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Artisan</span>
+                            <span className={s['tile-label']}>{t('categories.artisan')}</span>
                             <h2>バゲット</h2>
                         </div>
                     </Link>
@@ -93,7 +96,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-portrait']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/melon-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Sweet</span>
+                            <span className={s['tile-label']}>{t('categories.sweet')}</span>
                             <h3>メロンパン</h3>
                         </div>
                     </Link>
@@ -105,7 +108,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/butter-roll.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Classic</span>
+                            <span className={s['tile-label']}>{t('categories.classic')}</span>
                             <h3>バターロール</h3>
                         </div>
                     </Link>
@@ -113,7 +116,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/luxury-cheese-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Premium</span>
+                            <span className={s['tile-label']}>{t('categories.premium')}</span>
                             <h3>チーズパン</h3>
                         </div>
                     </Link>
@@ -121,7 +124,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/cinnamon-roll.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Sweet</span>
+                            <span className={s['tile-label']}>{t('categories.sweet')}</span>
                             <h3>シナモンロール</h3>
                         </div>
                     </Link>
@@ -134,7 +137,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/matcha-white-chocolate.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Matcha</span>
+                            <span className={s['tile-label']}>{t('categories.matcha')}</span>
                             <h3>抹茶</h3>
                         </div>
                     </Link>
@@ -147,7 +150,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-wide']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/bacon-epi.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Signature</span>
+                            <span className={s['tile-label']}>{t('categories.signature')}</span>
                             <h2>ベーコンエピ</h2>
                         </div>
                     </Link>
@@ -160,7 +163,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-portrait']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/chocolate-chip-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Sweet</span>
+                            <span className={s['tile-label']}>{t('categories.sweet')}</span>
                             <h3>チョコチップ</h3>
                         </div>
                     </Link>
@@ -168,7 +171,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-large']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/rustic-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Artisan</span>
+                            <span className={s['tile-label']}>{t('categories.artisan')}</span>
                             <h2>リュスティック</h2>
                         </div>
                     </Link>
@@ -176,7 +179,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/chocolate-sheet-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Sweet</span>
+                            <span className={s['tile-label']}>{t('categories.sweet')}</span>
                             <h3>チョコ食パン</h3>
                         </div>
                     </Link>
@@ -192,7 +195,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/matcha-roll.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Matcha</span>
+                            <span className={s['tile-label']}>{t('categories.matcha')}</span>
                             <h3>抹茶ロール</h3>
                         </div>
                     </Link>
@@ -201,7 +204,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-xlarge']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/cream-cheese.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Fresh Baked</span>
+                            <span className={s['tile-label']}>{t('categories.freshBaked')}</span>
                             <h2>クリームチーズ</h2>
                         </div>
                     </Link>
@@ -210,7 +213,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-medium']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/coconut-milk-bagel.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Tropical</span>
+                            <span className={s['tile-label']}>{t('categories.tropical')}</span>
                             <h3>ココナッツベーグル</h3>
                         </div>
                     </Link>
@@ -226,7 +229,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-medium']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/cookie-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Sweet</span>
+                            <span className={s['tile-label']}>{t('categories.sweet')}</span>
                             <h3>クッキーパン</h3>
                         </div>
                     </Link>
@@ -234,7 +237,7 @@ function Home() {
                     <Link to="/about" className={`${s['tile']} ${s['tile-small']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/keiko.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Baker</span>
+                            <span className={s['tile-label']}>{t('categories.baker')}</span>
                             <h3>Keiko</h3>
                         </div>
                     </Link>
@@ -243,7 +246,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-large']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/black-sesame-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Japanese</span>
+                            <span className={s['tile-label']}>{t('categories.japanese')}</span>
                             <h2>黒ゴマ食パン</h2>
                         </div>
                     </Link>
@@ -267,7 +270,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-medium']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/pretzel.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>German</span>
+                            <span className={s['tile-label']}>{t('categories.german')}</span>
                             <h3>プレッツェル</h3>
                         </div>
                     </Link>
@@ -280,7 +283,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-wide']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/apple-ring.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Seasonal</span>
+                            <span className={s['tile-label']}>{t('categories.seasonal')}</span>
                             <h2>アップルリング</h2>
                         </div>
                     </Link>
@@ -309,7 +312,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-portrait']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/viennois.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>French</span>
+                            <span className={s['tile-label']}>{t('categories.french')}</span>
                             <h3>ヴィエノワ</h3>
                         </div>
                     </Link>
@@ -321,7 +324,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-portrait']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/cheese-bagel.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Bagel</span>
+                            <span className={s['tile-label']}>{t('categories.bagel')}</span>
                             <h3>チーズベーグル</h3>
                         </div>
                     </Link>
@@ -329,7 +332,7 @@ function Home() {
                     <Link to="/products" className={`${s['tile']} ${s['tile-medium']}`}>
                         <div className={s['tile-image']} style={{backgroundImage: 'url(/images/pumpkin-bread.jpg)'}}></div>
                         <div className={s['tile-overlay']}>
-                            <span className={s['tile-label']}>Seasonal</span>
+                            <span className={s['tile-label']}>{t('categories.seasonal')}</span>
                             <h3>かぼちゃ食パン</h3>
                         </div>
                     </Link>
@@ -348,28 +351,28 @@ function Home() {
             {/* Weekly Bread Signup Section */}
             <section id="signup" className={s['newsletter']}>
                 <div className={s['newsletter-content']}>
-                    <h2>Weekly Fresh Bread</h2>
-                    <p>Sign up to receive our weekly bread list and reserve your favourites</p>
+                    <h2>{t('newsletter.title')}</h2>
+                    <p>{t('newsletter.subtitle')}</p>
                     <form className={s['newsletter-form']} onSubmit={handleSubscribe}>
                         <input
                             type="email"
-                            placeholder="your@email.com"
+                            placeholder={tCommon('newsletter.emailPlaceholder')}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                         <button type="submit" disabled={submitStatus === 'loading'}>
-                            {submitStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                            {submitStatus === 'loading' ? tCommon('newsletter.subscribing') : tCommon('newsletter.subscribe')}
                         </button>
                     </form>
                     {submitStatus === 'success' && (
-                        <p className={s['newsletter-success']}>Thank you! You're now subscribed.</p>
+                        <p className={s['newsletter-success']}>{tCommon('newsletter.success')}</p>
                     )}
                     {submitStatus === 'exists' && (
-                        <p className={s['newsletter-info']}>You're already subscribed!</p>
+                        <p className={s['newsletter-info']}>{tCommon('newsletter.alreadySubscribed')}</p>
                     )}
                     {submitStatus === 'error' && (
-                        <p className={s['newsletter-error']}>Something went wrong. Please try again.</p>
+                        <p className={s['newsletter-error']}>{tCommon('errors.generic')}</p>
                     )}
                 </div>
             </section>

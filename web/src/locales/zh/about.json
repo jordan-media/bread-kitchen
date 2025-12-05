@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "About Us",
+    "subtitle": "Our passion for baking, your daily bread"
+  },
+  "baker": {
+    "title": "Meet the Baker",
+    "name": "Yuki Tanaka",
+    "bio": "With over 20 years of experience in artisan bread making, Yuki brings a unique blend of traditional Japanese techniques and European craftsmanship to every loaf.",
+    "philosophy": "Every bread tells a story. From the careful selection of ingredients to the patient fermentation process, I believe in honoring the craft that has been passed down through generations."
+  },
+  "values": {
+    "title": "What We Believe",
+    "quality": {
+      "title": "Quality Ingredients",
+      "description": "We source the finest flours, grains, and natural ingredients from trusted local and international suppliers."
+    },
+    "traditional": {
+      "title": "Traditional Methods",
+      "description": "Our breads are crafted using time-honored techniques including long fermentation and natural yeast cultivation."
+    },
+    "love": {
+      "title": "Made with Love",
+      "description": "Every loaf is handcrafted with care and attention to detail, ensuring the highest quality in every bite."
+    }
+  },
+  "story": {
+    "title": "Our Story",
+    "paragraph1": "Bread Kitchen began as a small home bakery in 2016, born from a passion for authentic artisan bread making.",
+    "paragraph2": "What started as weekend baking sessions for friends and family has grown into a beloved local institution, serving fresh bread to our community every week.",
+    "paragraph3": "We remain committed to our founding principles: quality ingredients, traditional methods, and bread made with love."
+  }
+}

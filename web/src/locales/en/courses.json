@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Bread Baking Courses",
+    "japaneseTitle": "パン教室",
+    "subtitle": "Learn the art of bread making",
+    "description": "Three courses available for beginners and experienced bakers alike. Menus change every three months - check the latest offerings before booking."
+  },
+  "courseA": {
+    "title": "Course A",
+    "subtitle": "Long Fermentation Hard Breads",
+    "japaneseSubtitle": "低温長時間発酵のハードパン2種",
+    "price": "¥6,000",
+    "maxPeople": "Max 4 people",
+    "duration": "3 hours",
+    "features": [
+      "Two types of hard bread",
+      "Long fermentation technique",
+      "Low temperature method",
+      "Take home your creations"
+    ]
+  },
+  "courseB": {
+    "title": "Course B",
+    "subtitle": "Straight Method Breads",
+    "japaneseSubtitle": "ストレート法のパン2種",
+    "price": "¥5,500",
+    "maxPeople": "Max 4 people",
+    "duration": "3 hours",
+    "features": [
+      "Two types of bread",
+      "Straight dough method",
+      "Beginner friendly",
+      "Take home your creations"
+    ]
+  },
+  "courseC": {
+    "title": "Course C",
+    "subtitle": "Bread & Cooking",
+    "japaneseSubtitle": "ストレート法のパン1種と料理",
+    "price": "¥5,000",
+    "maxPeople": "Max 4 people",
+    "duration": "3 hours",
+    "features": [
+      "One type of bread",
+      "Complementary dish",
+      "Lunch included",
+      "Take home your creations"
+    ]
+  },
+  "booking": {
+    "inquiry": "Inquiry",
+    "preferredDate": "Preferred Date",
+    "preferredTime": "Preferred Time",
+    "participants": "Number of Participants",
+    "additionalMessage": "Additional Message (optional)",
+    "sendInquiry": "Send Inquiry",
+    "sending": "Sending..."
+  },
+  "timeSlots": {
+    "morning": "Morning (9:00-12:00)",
+    "afternoon": "Afternoon (13:00-16:00)",
+    "flexible": "Flexible"
+  },
+  "participants": {
+    "one": "1 person",
+    "two": "2 people",
+    "three": "3 people",
+    "four": "4 people"
+  }
+}

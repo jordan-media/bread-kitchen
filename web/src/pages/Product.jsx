@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";    
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import g from '../global.module.css';
 import p from './Product.module.css';
 import { API_BASE_URL } from '../api';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../contexts/LanguageContext';
 
 function Product() {
+    const { t } = useTranslation('products');
+    const { t: tCommon } = useTranslation('common');
+    const { language } = useLanguage();
+    const isJapanese = language === 'ja';
 
     const { id } = useParams();
     const [productData, setProductData] = useState(null);
     const [selectedVariant, setSelectedVariant] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    
+
     // Fetch product data from API
     useEffect(() => {
         fetch(`${API_BASE_URL}/products/${id}`)
@@ -20,14 +26,14 @@ function Product() {
             .then((jsonData) => {
                 console.log(jsonData);
                 setProductData(jsonData);
-                
+
                 // Set default selected variant if product has variants
                 if (jsonData.has_variants && jsonData.variants.length > 0) {
                     setSelectedVariant(jsonData.variants[0]);
                 }
             })
             .catch(err => console.error("Error fetching product:", err));
-    }, [id]); 
+    }, [id]);
 
     // Handle variant selection change
     const handleVariantChange = (e) => {
@@ -53,7 +59,7 @@ function Product() {
 
     const prevImage = () => {
         if (productData.images.length > 0) {
-            setCurrentImageIndex((prev) => 
+            setCurrentImageIndex((prev) =>
                 prev === 0 ? productData.images.length - 1 : prev - 1
             );
         }
@@ -63,7 +69,7 @@ function Product() {
     if (!productData) {
         return (
             <main className={g['container']}>
-                <p>Loading...</p>
+                <p>{tCommon('buttons.loading')}</p>
             </main>
         );
     }
@@ -78,7 +84,10 @@ function Product() {
                             <>
                                 <img
                                     src={`/assets/${productData.images[currentImageIndex].image_path}`}
-                                    alt={productData.images[currentImageIndex].alt_text_en || productData.name_en}
+                                    alt={isJapanese
+                                        ? (productData.images[currentImageIndex].alt_text_ja || productData.name_ja)
+                                        : (productData.images[currentImageIndex].alt_text_en || productData.name_en)
+                                    }
                                 />
                                 {productData.images.length > 1 && (
                                     <div className={p['image-nav']}>
@@ -91,50 +100,53 @@ function Product() {
                         ) : (
                             <img
                                 src={`/assets/placeholder.png`}
-                                alt={productData.name_en}
+                                alt={isJapanese ? productData.name_ja : productData.name_en}
                             />
                         )}
                     </div>
 
                     {/* Product info summary */}
                     <div className={p['product-meta']}>
-                        <p><strong>Category:</strong> {productData.category_name_en}</p>
+                        <p><strong>{t('product.category')}:</strong> {isJapanese ? productData.category_name_ja : productData.category_name_en}</p>
                         {productData.method_type && (
-                            <p><strong>Method:</strong> {productData.method_type.replace('_', ' ')}</p>
+                            <p><strong>{t('product.method')}:</strong> {productData.method_type.replace('_', ' ')}</p>
                         )}
-                        
+
                         {/* Allergen warnings */}
                         <div className={p['allergens']}>
-                            <strong>Contains:</strong>
+                            <strong>{tCommon('allergens.contains')}:</strong>
                             <ul>
-                                {productData.contains_dairy && <li>Dairy</li>}
-                                {productData.contains_eggs && <li>Eggs</li>}
-                                {productData.contains_nuts && <li>Nuts</li>}
-                                {productData.contains_sesame && <li>Sesame</li>}
+                                {productData.contains_dairy && <li>{tCommon('allergens.dairy')}</li>}
+                                {productData.contains_eggs && <li>{tCommon('allergens.eggs')}</li>}
+                                {productData.contains_nuts && <li>{tCommon('allergens.nuts')}</li>}
+                                {productData.contains_sesame && <li>{tCommon('allergens.sesame')}</li>}
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div className={g['col-8']}>
-                    <Link to="/" className={`${g['button']} ${g['small']}`}>&lt; Back to Products</Link>
-                    
-                    <h1 className={`${g["h2"]}`}>{productData.name_en}</h1>
-                    <h2 className={p['japanese-name']}>{productData.name_ja}</h2>
+                    <Link to="/products" className={`${g['button']} ${g['small']}`}>&lt; {t('product.backToProducts')}</Link>
+
+                    <h1 className={`${g["h2"]}`}>{isJapanese ? productData.name_ja : productData.name_en}</h1>
+                    <h2 className={p['japanese-name']}>{isJapanese ? productData.name_en : productData.name_ja}</h2>
 
                     {/* Size selector for products with variants */}
                     {productData.has_variants && productData.variants.length > 0 && (
                         <div className={p['size-selector']}>
-                            <label htmlFor="size">Select Size:</label>
-                            <select 
+                            <label htmlFor="size">{t('product.selectSize')}:</label>
+                            <select
                                 id="size"
-                                value={selectedVariant?.variant_id || ''} 
+                                value={selectedVariant?.variant_id || ''}
                                 onChange={handleVariantChange}
                                 className={p['size-dropdown']}
                             >
                                 {productData.variants.map(variant => (
                                     <option key={variant.variant_id} value={variant.variant_id}>
-                                        {variant.size_name_en} ({variant.size_name_ja}) - ¥{variant.price_jpy}
+                                        {isJapanese
+                                            ? `${variant.size_name_ja} (${variant.size_name_en}) - ¥${variant.price_jpy}`
+                                            : `${variant.size_name_en} (${variant.size_name_ja}) - ¥${variant.price_jpy}`
+                                        }
                                     </option>
                                 ))}
                             </select>
@@ -147,29 +159,29 @@ function Product() {
                     {/* Stock info for selected variant */}
                     {selectedVariant && (
                         <p className={p['stock-info']}>
-                            {selectedVariant.stock_quantity === null 
-                                ? "Made to order" 
-                                : selectedVariant.stock_quantity > 0 
-                                    ? `In stock: ${selectedVariant.stock_quantity}` 
-                                    : "Out of stock"}
+                            {selectedVariant.stock_quantity === null
+                                ? t('stock.madeToOrder')
+                                : selectedVariant.stock_quantity > 0
+                                    ? t('stock.inStock', { count: selectedVariant.stock_quantity })
+                                    : t('stock.outOfStock')}
                         </p>
                     )}
 
                     {/* Description */}
                     <div className={p['description']}>
-                        <h3>Description</h3>
-                        <p>{productData.description_en}</p>
-                        <p className={p['description-ja']}>{productData.description_ja}</p>
+                        <h3>{t('product.description')}</h3>
+                        <p>{isJapanese ? productData.description_ja : productData.description_en}</p>
+                        <p className={p['description-ja']}>{isJapanese ? productData.description_en : productData.description_ja}</p>
                     </div>
 
                     {/* Selected variant details */}
                     {selectedVariant && (
                         <div className={p['variant-details']}>
-                            <h3>Product Details</h3>
+                            <h3>{t('product.productDetails')}</h3>
                             <ul>
-                                <li><strong>Weight:</strong> {selectedVariant.weight_g}g (before baking)</li>
-                                <li><strong>Dimensions:</strong> {selectedVariant.dimensions_length_cm} × {selectedVariant.dimensions_width_cm} × {selectedVariant.dimensions_height_cm} cm</li>
-                                <li><strong>SKU:</strong> {selectedVariant.sku}</li>
+                                <li><strong>{t('product.weight')}:</strong> {selectedVariant.weight_g}g</li>
+                                <li><strong>{t('product.dimensions')}:</strong> {selectedVariant.dimensions_length_cm} × {selectedVariant.dimensions_width_cm} × {selectedVariant.dimensions_height_cm} cm</li>
+                                <li><strong>{t('product.sku')}:</strong> {selectedVariant.sku}</li>
                             </ul>
                         </div>
                     )}
