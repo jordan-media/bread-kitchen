@@ -311,15 +311,15 @@ router.post('/campaigns/:id/send-test', requireAuth, async (req, res) => {
             return res.status(404).json({ error: 'Campaign not found' });
         }
 
-        // Use environment variable for API URL in production
-        const apiUrl = process.env.API_URL || 'http://localhost:3001';
+        // Use frontend URL for images (hosted on HostPapa)
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
         const [items] = await pool.query(`
             SELECT
                 p.name_en,
                 p.name_ja,
                 p.price,
                 p.description_en,
-                CONCAT('${apiUrl}/products/images/', p.image) as image_url
+                CONCAT('${frontendUrl}/assets/', p.image) as image_url
             FROM email_campaign_items eci
             JOIN products p ON eci.product_id = p.product_id
             WHERE eci.campaign_id = ?
@@ -357,15 +357,15 @@ router.post('/campaigns/:id/send', requireAuth, async (req, res) => {
         }
 
         // Get items with product details
-        // Use environment variable for API URL in production
-        const apiUrl = process.env.API_URL || 'http://localhost:3001';
+        // Use frontend URL for images (hosted on HostPapa)
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
         const [items] = await pool.query(`
             SELECT
                 p.name_en,
                 p.name_ja,
                 p.price,
                 p.description_en,
-                CONCAT('${apiUrl}/products/images/', p.image) as image_url
+                CONCAT('${frontendUrl}/assets/', p.image) as image_url
             FROM email_campaign_items eci
             JOIN products p ON eci.product_id = p.product_id
             WHERE eci.campaign_id = ?
