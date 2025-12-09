@@ -1,50 +1,50 @@
 {
   "nav": {
-    "courses": "Courses",
-    "menu": "Menu",
-    "about": "About",
-    "contact": "Contact"
+    "courses": "教室",
+    "menu": "メニュー",
+    "about": "私たちについて",
+    "contact": "お問い合わせ"
   },
   "header": {
-    "ctaCourses": "Courses",
-    "ctaSignUp": "Sign Up",
-    "modalTitle": "Weekly Fresh Bread",
-    "modalDescription": "Sign up to receive our weekly bread list and reserve your favourites."
+    "ctaCourses": "教室",
+    "ctaSignUp": "登録する",
+    "modalTitle": "週替わりパン",
+    "modalDescription": "毎週届くパンリストに登録して、お気に入りをご予約ください。"
   },
   "footer": {
-    "tagline": "Baking bread since 1976",
-    "ownership": "Family owned and operated",
-    "copyright": "© Since 2016 Bread Kitchen"
+    "tagline": "1976年創業",
+    "ownership": "家族経営",
+    "copyright": "© 2016年創業 Bread Kitchen"
   },
   "newsletter": {
-    "emailPlaceholder": "your@email.com",
-    "subscribe": "Subscribe",
-    "subscribing": "Subscribing...",
-    "success": "Thank you! You're now subscribed.",
-    "alreadySubscribed": "You're already subscribed!"
+    "emailPlaceholder": "メールアドレス",
+    "subscribe": "登録する",
+    "subscribing": "登録中...",
+    "success": "ありがとうございます！登録が完了しました。",
+    "alreadySubscribed": "すでに登録済みです！"
   },
   "buttons": {
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "close": "Close",
-    "back": "Back",
-    "viewDetails": "View Details",
-    "sendMessage": "Send Message",
-    "sending": "Sending...",
-    "returnHome": "Return to Homepage",
-    "loading": "Loading..."
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "back": "戻る",
+    "viewDetails": "詳細を見る",
+    "sendMessage": "メッセージを送信",
+    "sending": "送信中...",
+    "returnHome": "トップページへ戻る",
+    "loading": "読み込み中..."
   },
   "allergens": {
-    "contains": "Contains",
-    "dairy": "Dairy",
-    "eggs": "Eggs",
-    "nuts": "Nuts",
-    "sesame": "Sesame",
-    "wheat": "Wheat"
+    "contains": "含有アレルゲン",
+    "dairy": "乳製品",
+    "eggs": "卵",
+    "nuts": "ナッツ",
+    "sesame": "ごま",
+    "wheat": "小麦"
   },
   "errors": {
-    "generic": "Something went wrong. Please try again.",
-    "connectionError": "Connection error. Please check your internet.",
-    "captcha": "reCAPTCHA not loaded. Please refresh and try again."
+    "generic": "エラーが発生しました。もう一度お試しください。",
+    "connectionError": "接続エラーです。インターネット接続をご確認ください。",
+    "captcha": "reCAPTCHAを読み込めませんでした。ページを更新してください。"
   }
 }

@@ -1,70 +1,70 @@
 {
   "page": {
-    "title": "Bread Baking Courses",
+    "title": "パン教室",
     "japaneseTitle": "パン教室",
-    "subtitle": "Learn the art of bread making",
-    "description": "Three courses available for beginners and experienced bakers alike. Menus change every three months - check the latest offerings before booking."
+    "subtitle": "パン作りの技術を学ぶ",
+    "description": "初心者から経験者まで、3つのコースをご用意しています。メニューは3ヶ月ごとに変わります。ご予約前に最新情報をご確認ください。"
   },
   "courseA": {
-    "title": "Course A",
-    "subtitle": "Long Fermentation Hard Breads",
+    "title": "コースA",
+    "subtitle": "低温長時間発酵のハードパン",
     "japaneseSubtitle": "低温長時間発酵のハードパン2種",
     "price": "¥6,000",
-    "maxPeople": "Max 4 people",
-    "duration": "3 hours",
+    "maxPeople": "最大4名",
+    "duration": "3時間",
     "features": [
-      "Two types of hard bread",
-      "Long fermentation technique",
-      "Low temperature method",
-      "Take home your creations"
+      "ハードパン2種類",
+      "長時間発酵の技術",
+      "低温発酵法",
+      "作ったパンはお持ち帰り"
     ]
   },
   "courseB": {
-    "title": "Course B",
-    "subtitle": "Straight Method Breads",
+    "title": "コースB",
+    "subtitle": "ストレート法のパン",
     "japaneseSubtitle": "ストレート法のパン2種",
     "price": "¥5,500",
-    "maxPeople": "Max 4 people",
-    "duration": "3 hours",
+    "maxPeople": "最大4名",
+    "duration": "3時間",
     "features": [
-      "Two types of bread",
-      "Straight dough method",
-      "Beginner friendly",
-      "Take home your creations"
+      "パン2種類",
+      "ストレート法",
+      "初心者向け",
+      "作ったパンはお持ち帰り"
     ]
   },
   "courseC": {
-    "title": "Course C",
-    "subtitle": "Bread & Cooking",
+    "title": "コースC",
+    "subtitle": "パンとお料理",
     "japaneseSubtitle": "ストレート法のパン1種と料理",
     "price": "¥5,000",
-    "maxPeople": "Max 4 people",
-    "duration": "3 hours",
+    "maxPeople": "最大4名",
+    "duration": "3時間",
     "features": [
-      "One type of bread",
-      "Complementary dish",
-      "Lunch included",
-      "Take home your creations"
+      "パン1種類",
+      "パンに合うお料理",
+      "ランチ付き",
+      "作ったパンはお持ち帰り"
     ]
   },
   "booking": {
-    "inquiry": "Inquiry",
-    "preferredDate": "Preferred Date",
-    "preferredTime": "Preferred Time",
-    "participants": "Number of Participants",
-    "additionalMessage": "Additional Message (optional)",
-    "sendInquiry": "Send Inquiry",
-    "sending": "Sending..."
+    "inquiry": "お問い合わせ",
+    "preferredDate": "ご希望日",
+    "preferredTime": "ご希望時間",
+    "participants": "参加人数",
+    "additionalMessage": "その他ご要望（任意）",
+    "sendInquiry": "送信する",
+    "sending": "送信中..."
   },
   "timeSlots": {
-    "morning": "Morning (9:00-12:00)",
-    "afternoon": "Afternoon (13:00-16:00)",
-    "flexible": "Flexible"
+    "morning": "午前（9:00〜12:00）",
+    "afternoon": "午後（13:00〜16:00）",
+    "flexible": "どちらでも可"
   },
   "participants": {
-    "one": "1 person",
-    "two": "2 people",
-    "three": "3 people",
-    "four": "4 people"
+    "one": "1名",
+    "two": "2名",
+    "three": "3名",
+    "four": "4名"
   }
 }

@@ -1,41 +1,41 @@
 {
   "hero": {
-    "title": "Contact Us",
-    "subtitle": "We'd love to hear from you"
+    "title": "お問い合わせ",
+    "subtitle": "お気軽にご連絡ください"
   },
   "form": {
-    "title": "Send a Message",
-    "name": "Name",
-    "namePlaceholder": "Your name",
-    "email": "Email",
-    "emailPlaceholder": "your@email.com",
-    "subject": "Subject",
-    "subjectPlaceholder": "How can we help you?",
-    "message": "Message",
-    "messagePlaceholder": "Your message...",
-    "submit": "Send Message",
-    "sending": "Sending...",
-    "success": "Message sent! We'll get back to you soon.",
-    "error": "Something went wrong. Please try again."
+    "title": "メッセージを送る",
+    "name": "お名前",
+    "namePlaceholder": "お名前を入力",
+    "email": "メールアドレス",
+    "emailPlaceholder": "example@email.com",
+    "subject": "件名",
+    "subjectPlaceholder": "ご用件をお選びください",
+    "message": "メッセージ",
+    "messagePlaceholder": "メッセージを入力してください...",
+    "submit": "送信する",
+    "sending": "送信中...",
+    "success": "送信完了！折り返しご連絡いたします。",
+    "error": "エラーが発生しました。もう一度お試しください。"
   },
   "subjects": {
-    "breadOrders": "Bread Orders",
-    "courseInquiry": "Course Inquiry",
-    "privateLesson": "Private Lesson",
-    "other": "Other"
+    "breadOrders": "パンのご注文",
+    "courseInquiry": "教室のお問い合わせ",
+    "privateLesson": "プライベートレッスン",
+    "other": "その他"
   },
   "info": {
     "weeklyBread": {
-      "title": "Weekly Fresh Bread",
-      "description": "Subscribe to our newsletter to receive weekly bread availability and reserve your favourites."
+      "title": "週替わりパン",
+      "description": "ニュースレターに登録して、毎週届くパン情報とご予約をお楽しみください。"
     },
     "courseBookings": {
-      "title": "Course Bookings",
-      "description": "Interested in our bread baking courses? Send us an inquiry or check our courses page."
+      "title": "教室のご予約",
+      "description": "パン教室に興味がありますか？お問い合わせいただくか、教室ページをご覧ください。"
     },
     "connect": {
-      "title": "Connect",
-      "description": "Follow us on social media for updates and behind-the-scenes content."
+      "title": "フォローする",
+      "description": "SNSで最新情報や舞台裏をチェックしてください。"
     }
   },
   "social": {
@@ -44,16 +44,16 @@
     "line": "LINE"
   },
   "unsubscribe": {
-    "title": "Unsubscribe",
-    "confirm": "Are you sure you want to unsubscribe",
-    "note": "You will no longer receive weekly bread updates.",
-    "button": "Yes, Unsubscribe",
-    "cancel": "Cancel",
-    "successTitle": "Unsubscribed",
-    "successMessage": "You have been successfully unsubscribed from our newsletter.",
-    "successNote": "We're sorry to see you go!",
-    "errorTitle": "Error",
-    "errorMessage": "Something went wrong. The link may be invalid or expired.",
-    "errorNote": "If you need help, please contact us."
+    "title": "配信停止",
+    "confirm": "配信を停止してもよろしいですか？",
+    "note": "週替わりパンのお知らせが届かなくなります。",
+    "button": "配信を停止する",
+    "cancel": "キャンセル",
+    "successTitle": "配信停止完了",
+    "successMessage": "ニュースレターの配信を停止しました。",
+    "successNote": "またのご登録をお待ちしております！",
+    "errorTitle": "エラー",
+    "errorMessage": "エラーが発生しました。リンクが無効または期限切れの可能性があります。",
+    "errorNote": "お困りの場合はお問い合わせください。"
   }
 }

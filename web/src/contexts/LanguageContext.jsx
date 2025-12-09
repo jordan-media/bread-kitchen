@@ -5,7 +5,6 @@ import { createContext, useState, useContext, useEffect } from 'react';
 export const LANGUAGES = {
     ja: { code: 'ja', name: '日本語', flag: '🇯🇵' },
     en: { code: 'en', name: 'English', flag: '🇨🇦' },
-    zh: { code: 'zh', name: '中文', flag: '🇨🇳' },
     ko: { code: 'ko', name: '한국어', flag: '🇰🇷' }
 };
 
@@ -53,7 +52,6 @@ export function LanguageProvider({ children }) {
         languages: LANGUAGES,
         isJapanese: language === 'ja',
         isEnglish: language === 'en',
-        isChinese: language === 'zh',
         isKorean: language === 'ko'
     };
 

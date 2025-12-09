@@ -1,32 +1,32 @@
 {
   "hero": {
-    "title": "Bread Kitchen",
-    "subtitle": "Freshly Baked Artisan Breads",
-    "description": "Handcrafted with love using traditional Japanese and European techniques"
+    "title": "브레드 키친",
+    "subtitle": "갓 구운 아티장 빵",
+    "description": "일본과 유럽의 전통 기법으로 정성껏 만들었습니다"
   },
   "newsletter": {
-    "title": "Weekly Fresh Bread",
-    "subtitle": "Sign up to receive our weekly bread list and reserve your favourites"
+    "title": "이번 주의 신선한 빵",
+    "subtitle": "주간 빵 리스트를 받아보고 좋아하는 빵을 미리 예약하세요"
   },
   "categories": {
-    "artisan": "Artisan",
-    "sweet": "Sweet",
-    "classic": "Classic",
-    "premium": "Premium",
-    "signature": "Signature",
-    "freshBaked": "Fresh Baked",
-    "tropical": "Tropical",
-    "baker": "Baker",
-    "japanese": "Japanese",
-    "german": "German",
-    "seasonal": "Seasonal",
-    "french": "French",
-    "bagel": "Bagel",
-    "matcha": "Matcha"
+    "artisan": "아티장",
+    "sweet": "스위트",
+    "classic": "클래식",
+    "premium": "프리미엄",
+    "signature": "시그니처",
+    "freshBaked": "갓 구운 빵",
+    "tropical": "트로피컬",
+    "baker": "베이커",
+    "japanese": "일본식",
+    "german": "독일식",
+    "seasonal": "시즌 메뉴",
+    "french": "프랑스식",
+    "bagel": "베이글",
+    "matcha": "말차"
   },
   "cta": {
-    "viewMenu": "View Full Menu",
-    "viewCourses": "View Courses",
-    "learnMore": "Learn More"
+    "viewMenu": "전체 메뉴 보기",
+    "viewCourses": "클래스 보기",
+    "learnMore": "더 알아보기"
   }
 }

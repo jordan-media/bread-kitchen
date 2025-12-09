@@ -1,32 +1,32 @@
 {
   "hero": {
     "title": "Bread Kitchen",
-    "subtitle": "Freshly Baked Artisan Breads",
-    "description": "Handcrafted with love using traditional Japanese and European techniques"
+    "subtitle": "焼きたての職人パン",
+    "description": "日本とヨーロッパの伝統技術を融合し、心を込めて手作りしています"
   },
   "newsletter": {
-    "title": "Weekly Fresh Bread",
-    "subtitle": "Sign up to receive our weekly bread list and reserve your favourites"
+    "title": "週替わりパン",
+    "subtitle": "毎週届くパンリストに登録して、お気に入りをご予約ください"
   },
   "categories": {
-    "artisan": "Artisan",
-    "sweet": "Sweet",
-    "classic": "Classic",
-    "premium": "Premium",
-    "signature": "Signature",
-    "freshBaked": "Fresh Baked",
-    "tropical": "Tropical",
-    "baker": "Baker",
-    "japanese": "Japanese",
-    "german": "German",
-    "seasonal": "Seasonal",
-    "french": "French",
-    "bagel": "Bagel",
-    "matcha": "Matcha"
+    "artisan": "職人パン",
+    "sweet": "スイート",
+    "classic": "クラシック",
+    "premium": "プレミアム",
+    "signature": "看板商品",
+    "freshBaked": "焼きたて",
+    "tropical": "トロピカル",
+    "baker": "ベーカー",
+    "japanese": "和風",
+    "german": "ドイツパン",
+    "seasonal": "季節限定",
+    "french": "フランスパン",
+    "bagel": "ベーグル",
+    "matcha": "抹茶"
   },
   "cta": {
-    "viewMenu": "View Full Menu",
-    "viewCourses": "View Courses",
-    "learnMore": "Learn More"
+    "viewMenu": "メニューを見る",
+    "viewCourses": "教室を見る",
+    "learnMore": "詳しく見る"
   }
 }

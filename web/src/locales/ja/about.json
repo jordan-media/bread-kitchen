@@ -1,33 +1,33 @@
 {
   "hero": {
-    "title": "About Us",
-    "subtitle": "Our passion for baking, your daily bread"
+    "title": "私たちについて",
+    "subtitle": "パン作りへの情熱を、毎日の食卓へ"
   },
   "baker": {
-    "title": "Meet the Baker",
-    "name": "Yuki Tanaka",
-    "bio": "With over 20 years of experience in artisan bread making, Yuki brings a unique blend of traditional Japanese techniques and European craftsmanship to every loaf.",
-    "philosophy": "Every bread tells a story. From the careful selection of ingredients to the patient fermentation process, I believe in honoring the craft that has been passed down through generations."
+    "title": "パン職人紹介",
+    "name": "田中 ゆき",
+    "bio": "20年以上の職人パン作りの経験を持ち、日本の伝統技術とヨーロッパの職人技を融合させた独自のパン作りを行っています。",
+    "philosophy": "一つひとつのパンには物語があります。素材選びから発酵まで、世代を超えて受け継がれてきた技術を大切にしています。"
   },
   "values": {
-    "title": "What We Believe",
+    "title": "私たちの信念",
     "quality": {
-      "title": "Quality Ingredients",
-      "description": "We source the finest flours, grains, and natural ingredients from trusted local and international suppliers."
+      "title": "厳選素材",
+      "description": "信頼できる国内外のサプライヤーから、最高品質の小麦粉、穀物、天然素材を仕入れています。"
     },
     "traditional": {
-      "title": "Traditional Methods",
-      "description": "Our breads are crafted using time-honored techniques including long fermentation and natural yeast cultivation."
+      "title": "伝統製法",
+      "description": "長時間発酵や天然酵母の培養など、昔ながらの製法でパンを焼き上げています。"
     },
     "love": {
-      "title": "Made with Love",
-      "description": "Every loaf is handcrafted with care and attention to detail, ensuring the highest quality in every bite."
+      "title": "心を込めて",
+      "description": "一つひとつ丁寧に手作りし、最高の品質をお届けします。"
     }
   },
   "story": {
-    "title": "Our Story",
-    "paragraph1": "Bread Kitchen began as a small home bakery in 2016, born from a passion for authentic artisan bread making.",
-    "paragraph2": "What started as weekend baking sessions for friends and family has grown into a beloved local institution, serving fresh bread to our community every week.",
-    "paragraph3": "We remain committed to our founding principles: quality ingredients, traditional methods, and bread made with love."
+    "title": "私たちの歩み",
+    "paragraph1": "Bread Kitchenは2016年、本格的な職人パンへの情熱から生まれた小さな自宅パン屋として始まりました。",
+    "paragraph2": "友人や家族のために週末に焼いていたパンが、今では地域の皆様に愛される存在へと成長しました。",
+    "paragraph3": "創業当初からの信念を守り続けています：厳選素材、伝統製法、そして心を込めたパン作り。"
   }
 }

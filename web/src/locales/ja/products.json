@@ -1,31 +1,31 @@
 {
   "page": {
     "title": "Bread Kitchen",
-    "subtitle": "Freshly baked artisan breads",
-    "description": "Explore our collection of handcrafted breads, each made with care and the finest ingredients. Select items are available for local pickup each week—subscribe to our mailing list to receive our current offerings and reserve your favourites fresh from the oven."
+    "subtitle": "焼きたての職人パン",
+    "description": "厳選した素材と丁寧な手作りで焼き上げたパンをご覧ください。毎週、一部商品を店頭受け取りにてご提供しています。メーリングリストに登録して、今週のラインナップをチェックし、焼きたてをご予約ください。"
   },
   "filters": {
-    "dairyFree": "Dairy Free",
-    "allCategories": "All Categories",
-    "clear": "Clear"
+    "dairyFree": "乳製品不使用",
+    "allCategories": "すべてのカテゴリー",
+    "clear": "クリア"
   },
   "product": {
-    "viewDetails": "View Details",
-    "imageComingSoon": "Image coming soon",
-    "backToProducts": "Back to Products",
-    "selectSize": "Select Size",
-    "description": "Description",
-    "productDetails": "Product Details",
-    "weight": "Weight",
-    "dimensions": "Dimensions",
-    "sku": "SKU",
-    "category": "Category",
-    "method": "Method"
+    "viewDetails": "詳細を見る",
+    "imageComingSoon": "画像準備中",
+    "backToProducts": "商品一覧に戻る",
+    "selectSize": "サイズを選択",
+    "description": "商品説明",
+    "productDetails": "商品詳細",
+    "weight": "重量",
+    "dimensions": "サイズ",
+    "sku": "商品番号",
+    "category": "カテゴリー",
+    "method": "製法"
   },
   "stock": {
-    "madeToOrder": "Made to order",
-    "inStock": "In stock: {{count}}",
-    "outOfStock": "Out of stock"
+    "madeToOrder": "受注生産",
+    "inStock": "在庫あり：{{count}}個",
+    "outOfStock": "在庫切れ"
   },
-  "languageToggle": "English"
+  "languageToggle": "日本語"
 }

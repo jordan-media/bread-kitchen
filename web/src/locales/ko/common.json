@@ -1,50 +1,50 @@
 {
   "nav": {
-    "courses": "Courses",
-    "menu": "Menu",
-    "about": "About",
-    "contact": "Contact"
+    "courses": "클래스",
+    "menu": "메뉴",
+    "about": "소개",
+    "contact": "문의하기"
   },
   "header": {
-    "ctaCourses": "Courses",
-    "ctaSignUp": "Sign Up",
-    "modalTitle": "Weekly Fresh Bread",
-    "modalDescription": "Sign up to receive our weekly bread list and reserve your favourites."
+    "ctaCourses": "클래스",
+    "ctaSignUp": "회원가입",
+    "modalTitle": "이번 주의 신선한 빵",
+    "modalDescription": "주간 빵 리스트를 받아보고 좋아하는 빵을 미리 예약하세요."
   },
   "footer": {
-    "tagline": "Baking bread since 1976",
-    "ownership": "Family owned and operated",
-    "copyright": "© Since 2016 Bread Kitchen"
+    "tagline": "1976년부터 이어온 제빵",
+    "ownership": "가족 경영 베이커리",
+    "copyright": "© Since 2016 브레드 키친"
   },
   "newsletter": {
     "emailPlaceholder": "your@email.com",
-    "subscribe": "Subscribe",
-    "subscribing": "Subscribing...",
-    "success": "Thank you! You're now subscribed.",
-    "alreadySubscribed": "You're already subscribed!"
+    "subscribe": "구독하기",
+    "subscribing": "구독 중...",
+    "success": "감사합니다! 구독이 완료되었습니다.",
+    "alreadySubscribed": "이미 구독 중입니다!"
   },
   "buttons": {
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "close": "Close",
-    "back": "Back",
-    "viewDetails": "View Details",
-    "sendMessage": "Send Message",
-    "sending": "Sending...",
-    "returnHome": "Return to Homepage",
-    "loading": "Loading..."
+    "submit": "제출",
+    "cancel": "취소",
+    "close": "닫기",
+    "back": "뒤로",
+    "viewDetails": "자세히 보기",
+    "sendMessage": "메시지 보내기",
+    "sending": "보내는 중...",
+    "returnHome": "홈으로 돌아가기",
+    "loading": "로딩 중..."
   },
   "allergens": {
-    "contains": "Contains",
-    "dairy": "Dairy",
-    "eggs": "Eggs",
-    "nuts": "Nuts",
-    "sesame": "Sesame",
-    "wheat": "Wheat"
+    "contains": "포함",
+    "dairy": "유제품",
+    "eggs": "계란",
+    "nuts": "견과류",
+    "sesame": "참깨",
+    "wheat": "밀"
   },
   "errors": {
-    "generic": "Something went wrong. Please try again.",
-    "connectionError": "Connection error. Please check your internet.",
-    "captcha": "reCAPTCHA not loaded. Please refresh and try again."
+    "generic": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "connectionError": "연결 오류입니다. 인터넷 연결을 확인해 주세요.",
+    "captcha": "reCAPTCHA를 불러오지 못했습니다. 페이지를 새로고침해 주세요."
   }
 }

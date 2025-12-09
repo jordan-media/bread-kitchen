@@ -18,14 +18,6 @@ import jaCourses from '../locales/ja/courses.json';
 import jaAbout from '../locales/ja/about.json';
 import jaContact from '../locales/ja/contact.json';
 
-// Chinese
-import zhCommon from '../locales/zh/common.json';
-import zhHome from '../locales/zh/home.json';
-import zhProducts from '../locales/zh/products.json';
-import zhCourses from '../locales/zh/courses.json';
-import zhAbout from '../locales/zh/about.json';
-import zhContact from '../locales/zh/contact.json';
-
 // Korean
 import koCommon from '../locales/ko/common.json';
 import koHome from '../locales/ko/home.json';
@@ -51,14 +43,6 @@ const translations = {
         courses: jaCourses,
         about: jaAbout,
         contact: jaContact
-    },
-    zh: {
-        common: zhCommon,
-        home: zhHome,
-        products: zhProducts,
-        courses: zhCourses,
-        about: zhAbout,
-        contact: zhContact
     },
     ko: {
         common: koCommon,
